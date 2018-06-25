@@ -4,6 +4,8 @@ apply plugin: 'kotlin-android'
 
 apply plugin: 'kotlin-android-extensions'
 
+apply plugin: 'kotlin-kapt'
+
 android {
     compileSdkVersion 27
     defaultConfig {
@@ -30,7 +32,7 @@ dependencies {
     final RX_ANDROID_VERSION = '2.0.1'
     final KOIN_VERSION = '0.9.1'
     final BUTTER_KNIFE_VERSION = '8.8.1'
-    final ANDROID_SUPPORT_VERSION = '27.1.0'
+    final ANDROID_SUPPORT_VERSION = '27.1.1'
     final TIMBER_VERSION = '4.6.1'
 
     implementation fileTree(dir: 'libs', include: ['*.jar'])
@@ -45,6 +47,8 @@ dependencies {
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'com.android.support.test:runner:1.0.2'
     androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'
+    implementation 'com.squareup.okhttp3:logging-interceptor:3.9.0'
+
 
     // Koin
     implementation "org.koin:koin-android:$KOIN_VERSION"
@@ -62,6 +66,4 @@ dependencies {
     // ButterKnife
     implementation "com.jakewharton:butterknife:$BUTTER_KNIFE_VERSION"
     kapt "com.jakewharton:butterknife-compiler:$BUTTER_KNIFE_VERSION"
-
-
 }
