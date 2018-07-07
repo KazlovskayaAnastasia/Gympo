@@ -1,3 +1,56 @@
 <resources>
     <string name="app_name">Workout Partner</string>
+    <string name="title_activity_navigation">NavigationActivity</string>
+    <string name="title_trainings">Trainings</string>
+    <string name="title_progress">Progress</string>
+    <string name="title_profile">Profile</string>
+    <string name="signIn">Sign In</string>
+    <string name="signUp">Sign Up</string>
+    <string name="name">Name</string>
+    <string name="surname">Surname</string>
+    <string name="email">Email</string>
+    <string name="age">Age</string>
+    <string name="password">Password</string>
+    <string name="AccQuestion">Already have an account?</string>
+    <string name="noAccQuestion">Don\'t have an account?</string>
+    <string name="or"> - OR - </string>
+    <string name="setTrainingTime"> Your training begins at: </string>
+    <string name="setTime"> Ready </string>
+    <string name="edit"> Edit </string>
+    <string name="delete"> Delete </string>
+    <string name="share"> Share </string>
+    <string name="exercises">Exercises</string>
+    <string name="trainings_list">Trainings list</string>
+    <string name="table_timetable">timetable</string>
+    <string name="table_exercises">exercises</string>
+    <string name="table_sets">sets</string>
+    <string name="log_in">Log in</string>
+    <string name="sets">Sets: %d</string>
+    <string name="fields_cannot_be_empty">Fields can not be empty!</string>
+    <string name="update">Update</string>
+    <string name="log_out">Log out</string>
+    <string name="log_out_dialog">Are you sure you want to quit?</string>
+    <string name="yes">Yes</string>
+    <string name="no">No</string>
+    <string name="oops">…Oops</string>
+    <string name="error_updating_data">Error updating data!</string>
+    <string name="index_number">Index number:</string>
+    <string name="repeats">Repeats:</string>
+    <string name="weight">Weight:</string>
+    <string name="required_time">Required time:</string>
+    <string name="rest_time">Rest time:</string>
+    <string name="sets_header">Sets</string>
+
+
+    <string-array name="weekdays">
+        <item name="selector">- Select your training day -</item>
+        <item name="monday">Monday</item>
+        <item name="tuesday">Tuesday</item>
+        <item name="wednesday">Wednesday</item>
+        <item name="thursday">Thursday</item>
+        <item name="friday">Friday</item>
+        <item name="saturday">Saturday</item>
+        <item name="sunday">Sunday</item>
+    </string-array>
+
 </resources>
