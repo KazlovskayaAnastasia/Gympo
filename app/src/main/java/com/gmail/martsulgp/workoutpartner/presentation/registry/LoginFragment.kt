@@ -21,6 +21,19 @@ import org.koin.android.ext.android.inject
 
 class LoginFragment : MvpAppCompatFragment(), LoginView {
 
+    lateinit var bundle: Bundle
+
+    companion object {
+        private const val KEY_KEY = "KEY"
+        fun newInstance(str: String): LoginFragment {
+            val fragment = LoginFragment()
+            val bundle = Bundle()
+            bundle.putString(KEY_KEY, str)
+            fragment.arguments = bundle
+            return fragment
+        }
+    }
+
     @InjectPresenter(type = PresenterType.GLOBAL)
     lateinit var presenter: LoginPresenter
 
@@ -45,6 +58,10 @@ class LoginFragment : MvpAppCompatFragment(), LoginView {
     @BindView(R.id.loginProgressBar)
     lateinit var loginProgressBar: ProgressBar
 
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        val str: String = arguments!!.getString(KEY_KEY)
+    }
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         val view = inflater.inflate(R.layout.fragment_login, container, false)
         ButterKnife.bind(this, view)
