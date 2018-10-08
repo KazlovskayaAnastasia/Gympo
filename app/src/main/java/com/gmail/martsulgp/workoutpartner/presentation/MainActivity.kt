@@ -2,6 +2,10 @@ package com.gmail.martsulgp.workoutpartner.presentation
 
 import android.os.Bundle
 import android.util.Log
+import android.view.View
+import android.widget.ProgressBar
+import butterknife.BindView
+import butterknife.ButterKnife
 import com.arellomobile.mvp.MvpAppCompatActivity
 import com.arellomobile.mvp.presenter.InjectPresenter
 import com.arellomobile.mvp.presenter.PresenterType
@@ -12,11 +16,15 @@ import com.gmail.martsulgp.workoutpartner.data.UserDataRepository
 import org.koin.android.ext.android.inject
 
 class MainActivity : MvpAppCompatActivity(), MainView {
-    override fun logger(message : String, debugLevel : MainPresenter.DebugLevel) {
-        when(debugLevel){
-            MainPresenter.DebugLevel.DEBUG -> Log.d(TAG, message)
-            MainPresenter.DebugLevel.ERROR -> Log.e(TAG, message)
-        }
+
+    @BindView(R.id.mainProgress)
+    lateinit var progressBar: ProgressBar
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        setContentView(R.layout.activity_main)
+        ButterKnife.bind(this)
+        presenter.onPageLoaded()
     }
 
     @InjectPresenter(type = PresenterType.GLOBAL)
@@ -30,18 +38,19 @@ class MainActivity : MvpAppCompatActivity(), MainView {
     @ProvidePresenter(type = PresenterType.GLOBAL)
     fun provideDialogPresenter() = MainPresenter(userDataRepository)
 
+    override fun logger(message : String, debugLevel : MainPresenter.DebugLevel) {
+        when(debugLevel){
+            MainPresenter.DebugLevel.DEBUG -> Log.d(TAG, message)
+            MainPresenter.DebugLevel.ERROR -> Log.e(TAG, message)
+        }
+    }
+
     override fun showProgressBar() {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+        progressBar.visibility = View.VISIBLE
     }
 
     override fun hideProgressBar() {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
-    }
-
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
-        presenter.onPageLoaded()
+        progressBar.visibility = View.GONE
     }
 
     companion object {

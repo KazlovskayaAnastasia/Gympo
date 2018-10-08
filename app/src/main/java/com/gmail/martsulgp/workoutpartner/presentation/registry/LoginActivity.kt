@@ -2,10 +2,23 @@ package com.gmail.martsulgp.workoutpartner.presentation.registry
 
 import android.os.Bundle
 import android.support.v4.app.Fragment
-import android.support.v7.app.AppCompatActivity
+import android.view.View
+import android.widget.ProgressBar
+import butterknife.BindView
+import com.arellomobile.mvp.MvpAppCompatActivity
 import com.gmail.martsulgp.workoutpartner.R
 
-class LoginActivity : AppCompatActivity() {
+class LoginActivity : MvpAppCompatActivity(), LoginView {
+
+    override fun progressBarVisibility(b: Boolean) {
+        when(b){
+            true -> progressBar.visibility = View.VISIBLE
+            else -> progressBar.visibility = View.GONE
+        }
+    }
+
+    @BindView(R.id.entryProgress)
+    lateinit var progressBar: ProgressBar
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

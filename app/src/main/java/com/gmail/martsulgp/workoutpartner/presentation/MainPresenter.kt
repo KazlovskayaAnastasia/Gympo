@@ -14,15 +14,15 @@ class MainPresenter(val userDataRepository: UserDataRepository) : MvpPresenter<M
 
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
-                .doOnSubscribe { }
-                .doOnTerminate { }
+                .doOnSubscribe { viewState.showProgressBar() }
+                .doOnTerminate {  }
                 .subscribe(
-                        { it -> viewState.logger(it.name ?: "", DebugLevel.DEBUG) },
-                        { error -> viewState.logger(error.message ?: "", DebugLevel.ERROR) }
+                        { it -> viewState.logger(it.name ?: "NoName", DebugLevel.DEBUG) },
+                        { error -> viewState.logger(error.message ?: "Error", DebugLevel.ERROR) }
                 )
     }
 
-    enum class DebugLevel(){
+    enum class DebugLevel{
         DEBUG,
         ERROR
     }
