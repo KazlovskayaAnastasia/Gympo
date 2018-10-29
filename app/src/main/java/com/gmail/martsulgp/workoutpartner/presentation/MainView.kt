@@ -7,5 +7,4 @@ interface MainView : MvpView {
     fun showProgressBar()
     fun hideProgressBar()
     fun logger(message : String, debugLevel : MainPresenter.DebugLevel)
-
 }
