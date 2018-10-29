@@ -56,5 +56,4 @@ class MainActivity : MvpAppCompatActivity(), MainView {
     companion object {
         const val TAG = "MainActivityTag"
     }
-
 }
