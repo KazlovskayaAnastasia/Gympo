@@ -1,4 +1,4 @@
-package com.gmail.martsulgp.workoutpartner.model.entity
+package com.gmail.martsulgp.workoutpartner.data.model.entity
 
 object UserInfo {
     lateinit var name: String

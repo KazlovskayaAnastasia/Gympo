@@ -1,6 +1,4 @@
-package com.gmail.martsulgp.workoutpartner.model.entity
-
-import com.google.gson.annotations.SerializedName
+package com.gmail.martsulgp.workoutpartner.data.model.entity
 
 
 data class Sets(

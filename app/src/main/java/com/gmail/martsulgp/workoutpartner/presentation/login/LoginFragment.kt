@@ -1,4 +1,4 @@
-package com.gmail.martsulgp.workoutpartner.presentation.registry
+package com.gmail.martsulgp.workoutpartner.presentation.login
 
 import android.os.Bundle
 import android.support.design.widget.TextInputEditText
@@ -16,15 +16,29 @@ import com.arellomobile.mvp.presenter.InjectPresenter
 import com.arellomobile.mvp.presenter.PresenterType
 import com.arellomobile.mvp.presenter.ProvidePresenter
 import com.gmail.martsulgp.workoutpartner.R
-import com.gmail.martsulgp.workoutpartner.data.UserDataRepository
+import com.gmail.martsulgp.workoutpartner.data.repository.UserDataRepository
+import com.google.android.gms.auth.api.signin.GoogleSignInResult
+import com.google.android.gms.common.ConnectionResult
 import org.koin.android.ext.android.inject
 
 class LoginFragment : MvpAppCompatFragment(), LoginView {
 
     lateinit var bundle: Bundle
 
+    override fun onConnectionFailed(connectionResult: ConnectionResult) {
+        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+    }
+
+    override fun signIn() {
+        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+    }
+
+    override fun handleSignInResult(result: GoogleSignInResult) {
+        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+    }
+
     companion object {
-        private const val KEY_KEY = "KEY"
+        const val KEY_KEY = "KEY"
         fun newInstance(str: String): LoginFragment {
             val fragment = LoginFragment()
             val bundle = Bundle()

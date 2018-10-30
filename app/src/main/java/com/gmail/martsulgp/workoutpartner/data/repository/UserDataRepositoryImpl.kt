@@ -1,8 +1,9 @@
-package com.gmail.martsulgp.workoutpartner.data
+package com.gmail.martsulgp.workoutpartner.data.repository
 
-import com.gmail.martsulgp.workoutpartner.model.response.LogInRequest
-import com.gmail.martsulgp.workoutpartner.model.response.RegisterRequest
-import com.gmail.martsulgp.workoutpartner.model.response.UserInfoResponse
+import com.gmail.martsulgp.workoutpartner.data.service.BackendlessApi
+import com.gmail.martsulgp.workoutpartner.data.model.request.LogInRequest
+import com.gmail.martsulgp.workoutpartner.data.model.request.RegisterRequest
+import com.gmail.martsulgp.workoutpartner.data.model.response.UserInfoResponse
 import io.reactivex.Observable
 
 class UserDataRepositoryImpl : UserDataRepository {

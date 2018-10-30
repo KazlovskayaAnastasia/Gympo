@@ -1,14 +1,31 @@
-package com.gmail.martsulgp.workoutpartner.presentation.registry
+package com.gmail.martsulgp.workoutpartner.presentation.login
 
+import android.content.Intent
 import android.os.Bundle
 import android.support.v4.app.Fragment
+import android.support.v4.app.FragmentManager
 import android.view.View
 import android.widget.ProgressBar
 import butterknife.BindView
 import com.arellomobile.mvp.MvpAppCompatActivity
 import com.gmail.martsulgp.workoutpartner.R
+import com.google.android.gms.auth.api.signin.GoogleSignInResult
+import com.google.android.gms.common.ConnectionResult
+import io.reactivex.internal.util.HalfSerializer.*
 
 class LoginActivity : MvpAppCompatActivity(), LoginView {
+
+    override fun onConnectionFailed(connectionResult: ConnectionResult) {
+        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+    }
+
+    override fun signIn() {
+        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+    }
+
+    override fun handleSignInResult(result: GoogleSignInResult) {
+        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+    }
 
     override fun progressBarVisibility(b: Boolean) {
         when(b){
@@ -25,7 +42,7 @@ class LoginActivity : MvpAppCompatActivity(), LoginView {
         setContentView(R.layout.activity_login)
 
         //TODO add a progressBar in activity xml
-
+//
 //        showProgress(getSupportFragmentManager());
 //        tokenUseCase.execute(preferences.getString(TOKEN_NAME, null), new DisposableObserver<Boolean>() {
 //            @Override
@@ -69,12 +86,11 @@ class LoginActivity : MvpAppCompatActivity(), LoginView {
         fragmentTransaction.add(R.id.entryContainer, fragment, fragment.TAG)
         fragmentTransaction.commitAllowingStateLoss()
     }
-
-//    public static void showFragment(FragmentManager fragmentManager, Fragment fragment) {
-//        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-//        fragmentTransaction.replace(R.id.entryContainer, fragment, fragment.getClass().getName());
-//        fragmentTransaction.addToBackStack(null);
-//        fragmentTransaction.commit();
-//    }
-
+/*
+    fun showFragment(fragmentManager: FragmentManager, fragment:Fragment) {
+        val fragmentTransaction = fragmentManager.beginTransaction()
+        fragmentTransaction.replace(R.id.entryContainer, fragment, fragment.getClass().getName())
+        fragmentTransaction.addToBackStack(null)
+        fragmentTransaction.commit()
+    }*/
 }

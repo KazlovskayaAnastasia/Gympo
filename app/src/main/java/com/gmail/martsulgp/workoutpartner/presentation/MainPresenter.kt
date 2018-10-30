@@ -1,14 +1,16 @@
 package com.gmail.martsulgp.workoutpartner.presentation
 
+import android.annotation.SuppressLint
 import com.arellomobile.mvp.InjectViewState
 import com.arellomobile.mvp.MvpPresenter
-import com.gmail.martsulgp.workoutpartner.data.UserDataRepository
+import com.gmail.martsulgp.workoutpartner.data.repository.UserDataRepository
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.schedulers.Schedulers
 
 @InjectViewState
 class MainPresenter(val userDataRepository: UserDataRepository) : MvpPresenter<MainView>() {
 
+    @SuppressLint("CheckResult")
     fun onPageLoaded(){
         userDataRepository.setLogInData("martsulg.p@gmail.com", "1111")
 

@@ -1,8 +1,8 @@
-package com.gmail.martsulgp.workoutpartner.data
+package com.gmail.martsulgp.workoutpartner.data.service
 
-import com.gmail.martsulgp.workoutpartner.model.response.LogInRequest
-import com.gmail.martsulgp.workoutpartner.model.response.RegisterRequest
-import com.gmail.martsulgp.workoutpartner.model.response.UserInfoResponse
+import com.gmail.martsulgp.workoutpartner.data.model.request.LogInRequest
+import com.gmail.martsulgp.workoutpartner.data.model.request.RegisterRequest
+import com.gmail.martsulgp.workoutpartner.data.model.response.UserInfoResponse
 import com.google.gson.GsonBuilder
 import io.reactivex.Observable
 import okhttp3.OkHttpClient
@@ -10,28 +10,25 @@ import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
 import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory
 import retrofit2.converter.gson.GsonConverterFactory
-import retrofit2.http.Body
-import retrofit2.http.GET
-import retrofit2.http.POST
-import retrofit2.http.Path
+import retrofit2.http.*
 import java.util.concurrent.TimeUnit
 
 interface BackendlessApi {
 
     @POST("users/login")
-    abstract fun logInUser(@Body profile: LogInRequest): Observable<UserInfoResponse>
+    fun logInUser(@Body profile: LogInRequest): Observable<UserInfoResponse>
 
     @POST("users/register")
-    abstract fun regUser(@Body profile: RegisterRequest): Observable<UserInfoResponse>
+    fun regUser(@Body profile: RegisterRequest): Observable<UserInfoResponse>
 
-    @GET("users/isvalidusertoken/{token}")
-    abstract fun checkToken(@Path("token") param: String): Observable<Boolean>
-
-//    @GET
-//    abstract fun getTrainings(@Url url: String): Observable<List<TrainingsFeed>>
+//    @GET("users/isvalidusertoken/{token}")
+//    fun checkToken(@Path("token") param: String): Observable<Boolean>
 //
 //    @GET
-//    abstract fun getExercises(@Url string: String): Observable<TrainingsFeed>
+//    fun getTrainings(@Url url: String): Observable<List<TrainingsFeed>>
+//
+//    @GET
+//    fun getExercises(@Url string: String): Observable<TrainingsFeed>
 //
 //    @GET
 //    abstract fun getSets(@Url url: String): Observable<ExercisesFeed>
@@ -40,10 +37,10 @@ interface BackendlessApi {
 //    abstract fun getUserInfo(@Path("userId") id: String): Observable<UserInfoResponse>
 //
 //    @POST("data/timetable")
-//    abstract fun newTraining(@Body feed: TrainingsFeed): Observable<TrainingsFeed>
+//    fun newTraining(@Body feed: TrainingsFeed): Observable<TrainingsFeed>
 //
 //    @POST("data/exercises")
-//    abstract fun newExercise(@Body feed: ExercisesFeed): Observable<ExercisesFeed>
+//    fun newExercise(@Body feed: ExercisesFeed): Observable<ExercisesFeed>
 //
 //    @PUT
 //    abstract fun updateTraining(@Url string: String, @Body feed: TrainingsFeed): Observable<TrainingsFeed>

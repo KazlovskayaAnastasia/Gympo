@@ -1,6 +1,6 @@
-package com.gmail.martsulgp.workoutpartner.data
+package com.gmail.martsulgp.workoutpartner.data.repository
 
-import com.gmail.martsulgp.workoutpartner.model.response.UserInfoResponse
+import com.gmail.martsulgp.workoutpartner.data.model.response.UserInfoResponse
 import io.reactivex.Observable
 
 interface UserDataRepository {

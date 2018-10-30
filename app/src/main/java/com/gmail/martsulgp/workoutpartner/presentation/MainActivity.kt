@@ -12,7 +12,7 @@ import com.arellomobile.mvp.presenter.PresenterType
 import com.arellomobile.mvp.presenter.ProvidePresenter
 import com.arellomobile.mvp.presenter.ProvidePresenterTag
 import com.gmail.martsulgp.workoutpartner.R
-import com.gmail.martsulgp.workoutpartner.data.UserDataRepository
+import com.gmail.martsulgp.workoutpartner.data.repository.UserDataRepository
 import org.koin.android.ext.android.inject
 
 class MainActivity : MvpAppCompatActivity(), MainView {

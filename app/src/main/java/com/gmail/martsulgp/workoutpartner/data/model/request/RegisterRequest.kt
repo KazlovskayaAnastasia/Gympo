@@ -1,7 +1,6 @@
-package com.gmail.martsulgp.workoutpartner.model.response
+package com.gmail.martsulgp.workoutpartner.data.model.request
 
 import com.google.gson.annotations.SerializedName
-
 
 data class RegisterRequest(
         @SerializedName("email")

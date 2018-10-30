@@ -1,4 +1,4 @@
-package com.gmail.martsulgp.workoutpartner.model.response
+package com.gmail.martsulgp.workoutpartner.data.model.response
 
 import com.google.gson.annotations.SerializedName
 

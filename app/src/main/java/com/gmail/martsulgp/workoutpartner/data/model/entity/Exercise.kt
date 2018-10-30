@@ -1,4 +1,4 @@
-package com.gmail.martsulgp.workoutpartner.model.entity
+package com.gmail.martsulgp.workoutpartner.data.model.entity
 
 data class Exercise(
         var exerciseName: String,
