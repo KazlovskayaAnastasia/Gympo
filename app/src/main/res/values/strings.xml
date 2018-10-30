@@ -53,4 +53,16 @@
         <item name="sunday">Sunday</item>
     </string-array>
 
+    <string-array name="destination">
+        <item name="lose_weight">Lose weight</item>
+        <item name="bulk_up">Bulk up</item>
+        <item name="keep_trim">Keep trim</item>
+    </string-array>
+
+    <string-array name="period">
+        <item name="beginner">0 - 2 years</item>
+        <item name="middle">2 - 5 years</item>
+        <item name="skilled">5 years and more</item>
+    </string-array>
+
 </resources>

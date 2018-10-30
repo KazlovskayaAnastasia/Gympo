@@ -15,7 +15,7 @@ class MainPresenter(val userDataRepository: UserDataRepository) : MvpPresenter<M
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .doOnSubscribe { viewState.showProgressBar() }
-                .doOnTerminate {  }
+                .doOnTerminate { viewState.hideProgressBar() }
                 .subscribe(
                         { it -> viewState.logger(it.name ?: "NoName", DebugLevel.DEBUG) },
                         { error -> viewState.logger(error.message ?: "Error", DebugLevel.ERROR) }

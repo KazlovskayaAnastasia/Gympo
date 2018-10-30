@@ -13,6 +13,7 @@ import com.arellomobile.mvp.presenter.ProvidePresenter
 import com.arellomobile.mvp.presenter.ProvidePresenterTag
 import com.gmail.martsulgp.workoutpartner.R
 import com.gmail.martsulgp.workoutpartner.data.UserDataRepository
+import com.gmail.martsulgp.workoutpartner.presentation.registry.RegistryDetailsFragment
 import org.koin.android.ext.android.inject
 
 class MainActivity : MvpAppCompatActivity(), MainView {
@@ -24,7 +25,8 @@ class MainActivity : MvpAppCompatActivity(), MainView {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         ButterKnife.bind(this)
-        presenter.onPageLoaded()
+        supportFragmentManager.beginTransaction().addToBackStack(null).replace(R.id.main_container, RegistryDetailsFragment()).commit()
+        //presenter.onPageLoaded()
     }
 
     @InjectPresenter(type = PresenterType.GLOBAL)
