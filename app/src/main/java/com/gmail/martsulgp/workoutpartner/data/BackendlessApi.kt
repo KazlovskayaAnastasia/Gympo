@@ -1,31 +1,47 @@
 package com.gmail.martsulgp.workoutpartner.data
 
+import com.gmail.martsulgp.workoutpartner.model.request.UserDataRequest
 import com.gmail.martsulgp.workoutpartner.model.response.LogInRequest
 import com.gmail.martsulgp.workoutpartner.model.response.RegisterRequest
-import com.gmail.martsulgp.workoutpartner.model.response.UserInfoResponse
+import com.gmail.martsulgp.workoutpartner.model.response.UserDataResponse
 import com.google.gson.GsonBuilder
+import io.reactivex.Completable
 import io.reactivex.Observable
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
 import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory
 import retrofit2.converter.gson.GsonConverterFactory
-import retrofit2.http.Body
-import retrofit2.http.GET
-import retrofit2.http.POST
-import retrofit2.http.Path
+import retrofit2.http.*
 import java.util.concurrent.TimeUnit
 
 interface BackendlessApi {
 
+    // Auth block
     @POST("users/login")
-    abstract fun logInUser(@Body profile: LogInRequest): Observable<UserInfoResponse>
+    fun logInUser(@Body profile: LogInRequest): Observable<UserDataResponse>
 
     @POST("users/register")
-    abstract fun regUser(@Body profile: RegisterRequest): Observable<UserInfoResponse>
+    fun regUser(@Body profile: RegisterRequest): Observable<UserDataResponse>
 
     @GET("users/isvalidusertoken/{token}")
-    abstract fun checkToken(@Path("token") param: String): Observable<Boolean>
+    fun checkToken(@Path("token") param: String): Observable<Boolean>
+
+    //    @GET("users/logout")
+//    abstract fun logOut(@Header("user-token") token: String): Observable<Response<Void>>
+
+
+    // User block
+    @GET("users/{userId}?props")
+    fun getUserInfo(@Path("userId") id: String): Observable<UserDataResponse>
+
+    @PUT("users/{userId}")
+    fun updateUser(@Path("userId") id: String, @Body info: UserDataRequest): Completable
+
+
+
+
+
 
 //    @GET
 //    abstract fun getTrainings(@Url url: String): Observable<List<TrainingsFeed>>
@@ -36,8 +52,6 @@ interface BackendlessApi {
 //    @GET
 //    abstract fun getSets(@Url url: String): Observable<ExercisesFeed>
 //
-//    @GET("users/{userId}?props")
-//    abstract fun getUserInfo(@Path("userId") id: String): Observable<UserInfoResponse>
 //
 //    @POST("data/timetable")
 //    abstract fun newTraining(@Body feed: TrainingsFeed): Observable<TrainingsFeed>
@@ -51,14 +65,10 @@ interface BackendlessApi {
 //    @POST
 //    abstract fun updateExercise(@Url string: String, @Body feed: ExercisesFeed): Observable<ExercisesFeed>
 //
-//    @PUT
-//    abstract fun updateUser(@Url string: String, @Body info: UserInfo): Observable<UserInfoResponse>
 //
 //    @DELETE
 //    abstract fun delItem(@Url url: String): Observable<DeleteResponse>
 //
-//    @GET("users/logout")
-//    abstract fun logOut(@Header("user-token") token: String): Observable<Response<Void>>
 //
 //    @PUT("data/Timetable/{objectId}/exercise")
 //    abstract fun addRelation(@Path("objectId") id: String, @Body relation: Relation): Observable<Int>

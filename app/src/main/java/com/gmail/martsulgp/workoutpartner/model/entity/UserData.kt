@@ -1,6 +1,6 @@
 package com.gmail.martsulgp.workoutpartner.model.entity
 
-object UserInfo {
+object UserData {
     lateinit var name: String
     lateinit var surname: String
     lateinit var email: String

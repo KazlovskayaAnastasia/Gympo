@@ -8,7 +8,7 @@ import io.reactivex.schedulers.Schedulers
 class LoginPresenter(private val userDataRepository: UserDataRepository) : MvpPresenter<LoginView>() {
 
     fun onPageLoaded() {
-        userDataRepository.setLogInData("martsulg.p@gmail.com", "1111")
+        userDataRepository.logInUser("martsulg.p@gmail.com", "1111")
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .doOnSubscribe { viewState.progressBarVisibility(true) }
@@ -18,6 +18,4 @@ class LoginPresenter(private val userDataRepository: UserDataRepository) : MvpPr
 //                        { error -> viewState.logger(error.message ?: "", MainPresenter.DebugLevel.ERROR) }
                 )
     }
-
-
 }

@@ -32,6 +32,10 @@
     <string name="log_out_dialog">Are you sure you want to quit?</string>
     <string name="yes">Yes</string>
     <string name="no">No</string>
+    <string name="close">Close</string>
+    <string name="cancel">Cancel</string>
+    <string name="continue_button">Continue</string>
+    <string name="ok">OK</string>
     <string name="oops">…Oops</string>
     <string name="error_updating_data">Error updating data!</string>
     <string name="index_number">Index number:</string>
@@ -54,12 +58,14 @@
     </string-array>
 
     <string-array name="destination">
+        <item name="not_defined">Not defined</item>
         <item name="lose_weight">Lose weight</item>
         <item name="bulk_up">Bulk up</item>
         <item name="keep_trim">Keep trim</item>
     </string-array>
 
     <string-array name="period">
+        <item name="trainee">No value</item>
         <item name="beginner">0 - 2 years</item>
         <item name="middle">2 - 5 years</item>
         <item name="skilled">5 years and more</item>

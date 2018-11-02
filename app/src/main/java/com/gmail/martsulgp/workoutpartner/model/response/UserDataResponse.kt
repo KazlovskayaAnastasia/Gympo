@@ -2,7 +2,7 @@ package com.gmail.martsulgp.workoutpartner.model.response
 
 import com.google.gson.annotations.SerializedName
 
-data class UserInfoResponse(
+data class UserDataResponse(
         var name: String? = null,
         var surname: String? = null,
         var email: String? = null,

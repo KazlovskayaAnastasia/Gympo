@@ -61,12 +61,28 @@
                 android:text="Date of birthday"
                 android:textSize="20sp" />
 
+            <Spinner
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:layout_marginTop="10dp"
+                android:layout_below="@+id/layout_authEditSurname"
+                android:layout_toRightOf="@+id/birth"/>
+
             <LinearLayout
                 android:id="@+id/layout_editBirthday"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/birth"
                 android:orientation="horizontal">
+
+                <CalendarView
+                    android:id="@+id/calendar"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:visibility="gone">
+
+                </CalendarView>
 
                 <android.support.design.widget.TextInputLayout
                     android:id="@+id/layout_editDayOfBirth"
@@ -84,11 +100,6 @@
                         android:inputType="textEmailAddress" />
                 </android.support.design.widget.TextInputLayout>
 
-                <Spinner
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center_vertical"/>
-
                 <android.support.design.widget.TextInputLayout
                     android:id="@+id/layout_editMonthOfBirth"
                     android:layout_width="40dp"
@@ -105,11 +116,6 @@
                         android:inputType="textEmailAddress" />
                 </android.support.design.widget.TextInputLayout>
 
-                <Spinner
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center_vertical"/>
-
                 <android.support.design.widget.TextInputLayout
                     android:id="@+id/layout_editYearOfBirth"
                     android:layout_width="80dp"
@@ -125,11 +131,6 @@
                         android:hint="2018"
                         android:inputType="textEmailAddress" />
                 </android.support.design.widget.TextInputLayout>
-
-                <Spinner
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center_vertical"/>
 
             </LinearLayout>
 
@@ -253,7 +254,7 @@
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/spinner_period"
                 android:layout_marginTop="20dp"
-                android:text="Destination"
+                android:text="Aim"
                 android:textSize="20sp" />
 
             <Spinner

@@ -10,7 +10,7 @@ import io.reactivex.schedulers.Schedulers
 class MainPresenter(val userDataRepository: UserDataRepository) : MvpPresenter<MainView>() {
 
     fun onPageLoaded(){
-        userDataRepository.setLogInData("martsulg.p@gmail.com", "1111")
+        userDataRepository.logInUser("martsulg.p@gmail.com", "1111")
 
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
