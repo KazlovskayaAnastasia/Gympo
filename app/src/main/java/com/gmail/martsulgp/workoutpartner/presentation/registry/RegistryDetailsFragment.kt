@@ -36,7 +36,8 @@ class RegistryDetailsFragment : MvpAppCompatFragment(), RegistryDetailsView {
      fun getUser()= UserDataRequest(
         name = signInEditName.text.toString(),
         surname = signInEditSurname.text.toString(),
-        birthday = 1234567L,
+//  TODO on server: age, here: birthday. Fix this issue on backend
+        birthday = 21,//1234567L,
         height = signInEditHeight.text.toString().toInt(),
         weight = signInEditWeight.text.toString().toInt(),
         experience = experience.selectedItemPosition,//.toString().toInt(),
