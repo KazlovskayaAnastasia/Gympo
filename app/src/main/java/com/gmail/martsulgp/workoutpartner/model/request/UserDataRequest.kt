@@ -6,7 +6,7 @@ data class UserDataRequest(
         var name: String,
         var surname: String,
         @SerializedName("age") // delete later
-        var birthday: Int,//Long,
+        var age: Int,
         var height: Int,
         var weight: Int,
         var experience: Int,

@@ -33,15 +33,15 @@ class RegistryDetailsFragment : MvpAppCompatFragment(), RegistryDetailsView {
         presenter.updateUser(getUser())
     }
 
-     fun getUser()= UserDataRequest(
+     private fun getUser()= UserDataRequest(
         name = signInEditName.text.toString(),
         surname = signInEditSurname.text.toString(),
 //  TODO on server: age, here: birthday. Fix this issue on backend
-        birthday = 21,//1234567L,
+        age = signInBirth.text.toString().toInt(),
         height = signInEditHeight.text.toString().toInt(),
         weight = signInEditWeight.text.toString().toInt(),
-        experience = experience.selectedItemPosition,//.toString().toInt(),
-        goal = aim.selectedItemPosition//.toString().toInt()
+        experience = experience.selectedItemPosition,
+        goal = aim.selectedItemPosition
         )
 
     override fun showAlertDialog(message: String?) {
@@ -64,6 +64,8 @@ class RegistryDetailsFragment : MvpAppCompatFragment(), RegistryDetailsView {
     lateinit var layout_signInEditSurname: TextInputLayout
     @BindView(R.id.signInEditSurname)
     lateinit var signInEditSurname: TextInputEditText
+    @BindView(R.id.signInBirth)
+    lateinit var signInBirth: TextInputEditText
     @BindView(R.id.layout_editHeight)
     lateinit var layout_editHeight: TextInputLayout
     @BindView(R.id.signInEditHeight)
@@ -72,8 +74,8 @@ class RegistryDetailsFragment : MvpAppCompatFragment(), RegistryDetailsView {
     lateinit var layout_editWeight: TextInputLayout
     @BindView(R.id.signInEditWeight)
     lateinit var signInEditWeight: TextInputEditText
-    @BindView(R.id.calendar)
-    lateinit var calendar: CalendarView
+//    @BindView(R.id.calendar)
+//    lateinit var calendar: CalendarView
     @BindView(R.id.spinner_period)
     lateinit var experience: Spinner
     private var expSelection = 0
@@ -94,7 +96,7 @@ class RegistryDetailsFragment : MvpAppCompatFragment(), RegistryDetailsView {
     @ProvidePresenter(type = PresenterType.GLOBAL)
     fun provideDialogPresenter() = RegistryDetailsPresenter(userDataRepository)
 
-    var validationFields: ArrayList<TextInputEditText> = arrayListOf()
+    private var validationFields: ArrayList<TextInputEditText> = arrayListOf()
 
     override fun progressBarVisibility(b: Boolean) {
         TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
@@ -103,8 +105,6 @@ class RegistryDetailsFragment : MvpAppCompatFragment(), RegistryDetailsView {
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         val view = inflater.inflate(R.layout.fragment_registry_details, container, false)
         ButterKnife.bind(this, view)
-
-//        var day = calendar.date.
 
         experience.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
             override fun onItemSelected(parent: AdapterView<*>,
@@ -133,6 +133,7 @@ class RegistryDetailsFragment : MvpAppCompatFragment(), RegistryDetailsView {
                 add(signInEditSurname)
                 add(signInEditHeight)
                 add(signInEditWeight)
+                add(signInBirth)
             }
         }
 
