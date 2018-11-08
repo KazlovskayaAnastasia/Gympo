@@ -6,7 +6,7 @@ import android.view.View
 import android.widget.ProgressBar
 import butterknife.BindView
 import butterknife.ButterKnife
-import com.arellomobile.mvp.MvpAppCompatActivity
+import com.arellomobile.mvp.MvpActivity
 import com.arellomobile.mvp.presenter.InjectPresenter
 import com.arellomobile.mvp.presenter.PresenterType
 import com.arellomobile.mvp.presenter.ProvidePresenter
@@ -16,7 +16,7 @@ import com.gmail.martsulgp.gympo.data.repository.UserDataRepository
 import com.gmail.martsulgp.gympo.presentation.registry.RegistryDetailsFragment
 import org.koin.android.ext.android.inject
 
-class MainActivity : MvpAppCompatActivity(), MainView {
+class MainActivity : MvpActivity(), MainView {
 
     @BindView(R.id.mainProgress)
     lateinit var progressBar: ProgressBar
@@ -25,7 +25,7 @@ class MainActivity : MvpAppCompatActivity(), MainView {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         ButterKnife.bind(this)
-        supportFragmentManager.beginTransaction().addToBackStack(null).replace(R.id.main_container, RegistryDetailsFragment()).commit()
+        fragmentManager.beginTransaction().addToBackStack(null).replace(R.id.main_container, RegistryDetailsFragment()).commit()
         //presenter.onPageLoaded()
     }
 

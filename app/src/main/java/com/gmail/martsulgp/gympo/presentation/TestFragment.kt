@@ -6,10 +6,10 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
 import butterknife.BindView
-import com.arellomobile.mvp.MvpAppCompatFragment
+import com.arellomobile.mvp.MvpFragment
 import com.gmail.martsulgp.gympo.R
 
-class TestFragment : MvpAppCompatFragment(),  View.OnClickListener {
+class TestFragment : MvpFragment(),  View.OnClickListener {
 
     override fun onClick(v: View?) {
     }

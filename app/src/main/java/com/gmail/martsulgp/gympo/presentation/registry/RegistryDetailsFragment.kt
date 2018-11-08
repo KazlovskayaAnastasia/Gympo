@@ -1,8 +1,6 @@
 package com.gmail.martsulgp.gympo.presentation.registry
 
 import android.os.Bundle
-import android.support.design.widget.TextInputEditText
-import android.support.design.widget.TextInputLayout
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -12,7 +10,7 @@ import android.widget.Spinner
 import android.widget.Toast
 import butterknife.BindView
 import butterknife.ButterKnife
-import com.arellomobile.mvp.MvpAppCompatFragment
+import com.arellomobile.mvp.MvpFragment
 import com.arellomobile.mvp.presenter.InjectPresenter
 import com.arellomobile.mvp.presenter.PresenterType
 import com.arellomobile.mvp.presenter.ProvidePresenter
@@ -21,9 +19,11 @@ import com.gmail.martsulgp.gympo.R
 import com.gmail.martsulgp.gympo.data.model.request.UserDataRequest
 import com.gmail.martsulgp.gympo.data.repository.UserDataRepository
 import com.gmail.martsulgp.gympo.extras.InfoDialog
+import com.google.android.material.textfield.TextInputEditText
+import com.google.android.material.textfield.TextInputLayout
 import org.koin.android.ext.android.inject
 
-class RegistryDetailsFragment : MvpAppCompatFragment(), RegistryDetailsView {
+class RegistryDetailsFragment : MvpFragment(), RegistryDetailsView {
 
     override fun onSaveClick() {
         var b = false

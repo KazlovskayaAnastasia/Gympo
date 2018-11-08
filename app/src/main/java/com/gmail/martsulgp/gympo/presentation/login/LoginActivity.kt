@@ -1,21 +1,21 @@
 package com.gmail.martsulgp.gympo.presentation.login
 
 import android.os.Bundle
-import android.support.v4.app.Fragment
-import com.arellomobile.mvp.MvpAppCompatActivity
+import com.arellomobile.mvp.MvpActivity
 import com.gmail.martsulgp.gympo.R
 
 
-class LoginActivity: MvpAppCompatActivity(), LoginActivityView {
+class LoginActivity: MvpActivity(), LoginActivityView {
 
-    override fun showFragment(fragment: Fragment) {
-        supportFragmentManager.beginTransaction().addToBackStack(null).replace(R.id.entryContainer, fragment).commit()
+    override fun showFragment(fragment: androidx.fragment.app.Fragment) {
+//        fragmentManager.beginTransaction().addToBackStack(null).replace(R.id.entryContainer, fragment).commit()
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_login)
-        showFragment(LoginFragment())
+        fragmentManager.beginTransaction().addToBackStack(null).replace(R.id.entryContainer, LoginFragment()).commit()
+//        showFragment(LoginFragment())
     }
 
     companion object {

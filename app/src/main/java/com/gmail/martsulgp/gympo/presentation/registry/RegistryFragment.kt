@@ -1,8 +1,6 @@
 package com.gmail.martsulgp.gympo.presentation.registry
 
 import android.os.Bundle
-import android.support.design.widget.TextInputEditText
-import android.support.design.widget.TextInputLayout
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
@@ -12,7 +10,7 @@ import android.widget.ProgressBar
 import android.widget.TextView
 import butterknife.BindView
 import butterknife.ButterKnife
-import com.arellomobile.mvp.MvpAppCompatFragment
+import com.arellomobile.mvp.MvpFragment
 import com.arellomobile.mvp.presenter.InjectPresenter
 import com.arellomobile.mvp.presenter.PresenterType
 import com.arellomobile.mvp.presenter.ProvidePresenter
@@ -24,7 +22,7 @@ import com.google.android.gms.common.ConnectionResult
 import com.google.android.gms.common.api.GoogleApiClient
 import org.koin.android.ext.android.inject
 
-class RegistryFragment : MvpAppCompatFragment(), GoogleApiClient.OnConnectionFailedListener, RegistryView {
+class RegistryFragment : MvpFragment(), GoogleApiClient.OnConnectionFailedListener, RegistryView {
 
     @InjectPresenter(type = PresenterType.GLOBAL)
     lateinit var presenter: RegistryPresenter
@@ -37,24 +35,24 @@ class RegistryFragment : MvpAppCompatFragment(), GoogleApiClient.OnConnectionFai
     fun provideDialogPresenter() = RegistryPresenter(userDataRepository)
 
     @BindView(R.id.layout_signInEditName)
-    lateinit var layout_signInEditName: TextInputLayout
+    lateinit var layout_signInEditName: com.google.android.material.textfield.TextInputLayout
     @BindView(R.id.signInEditName)
-    lateinit var signInEditName: TextInputEditText
+    lateinit var signInEditName: com.google.android.material.textfield.TextInputEditText
 
     @BindView(R.id.layout_signUpEditSurname)
-    lateinit var layout_signUpEditSurname: TextInputLayout
+    lateinit var layout_signUpEditSurname: com.google.android.material.textfield.TextInputLayout
     @BindView(R.id.signUpEditSurname)
-    lateinit var signUpEditSurname: TextInputEditText
+    lateinit var signUpEditSurname: com.google.android.material.textfield.TextInputEditText
 
     @BindView(R.id.layout_signUpEditEmail)
-    lateinit var layout_signUpEditEmail: TextInputLayout
+    lateinit var layout_signUpEditEmail: com.google.android.material.textfield.TextInputLayout
     @BindView(R.id.signUpEditEmail)
-    lateinit var signUpEditEmail: TextInputEditText
+    lateinit var signUpEditEmail: com.google.android.material.textfield.TextInputEditText
 
     @BindView(R.id.layout_signUpEditPassword)
-    lateinit var layout_signUpEditPassword: TextInputLayout
+    lateinit var layout_signUpEditPassword: com.google.android.material.textfield.TextInputLayout
     @BindView(R.id.signUpEditPassword)
-    lateinit var signUpEditPassword: TextInputEditText
+    lateinit var signUpEditPassword: com.google.android.material.textfield.TextInputEditText
 
     @BindView(R.id.SignUpButton)
     lateinit var SignUpButton: Button

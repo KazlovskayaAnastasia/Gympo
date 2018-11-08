@@ -2,9 +2,6 @@ package com.gmail.martsulgp.gympo.presentation.login
 
 import android.content.Intent
 import android.os.Bundle
-import android.support.design.widget.TextInputEditText
-import android.support.design.widget.TextInputLayout
-import android.support.v4.app.FragmentActivity
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
@@ -14,7 +11,7 @@ import android.widget.ProgressBar
 import android.widget.TextView
 import butterknife.BindView
 import butterknife.ButterKnife
-import com.arellomobile.mvp.MvpAppCompatFragment
+import com.arellomobile.mvp.MvpFragment
 import com.arellomobile.mvp.presenter.InjectPresenter
 import com.arellomobile.mvp.presenter.PresenterType
 import com.arellomobile.mvp.presenter.ProvidePresenter
@@ -37,7 +34,7 @@ import org.json.JSONException
 import org.koin.android.ext.android.inject
 import java.util.*
 
-class LoginFragment : MvpAppCompatFragment(), GoogleApiClient.OnConnectionFailedListener, LoginView {
+class LoginFragment : MvpFragment(), GoogleApiClient.OnConnectionFailedListener, LoginView {
 
     @InjectPresenter(type = PresenterType.GLOBAL)
     lateinit var presenter: LoginPresenter
@@ -55,15 +52,15 @@ class LoginFragment : MvpAppCompatFragment(), GoogleApiClient.OnConnectionFailed
     fun provideDialogPresenter() = LoginPresenter(userDataRepository)
 
     @BindView(R.id.layout_signInEditLogin)
-    lateinit var layout_signInEditLogin: TextInputLayout
+    lateinit var layout_signInEditLogin: com.google.android.material.textfield.TextInputLayout
 
     @BindView(R.id.signInEditLogin)
-    lateinit var signInEditLogin: TextInputEditText
+    lateinit var signInEditLogin: com.google.android.material.textfield.TextInputEditText
     @BindView(R.id.layout_signInEditPassword)
-    lateinit var layout_signInEditPassword: TextInputLayout
+    lateinit var layout_signInEditPassword: com.google.android.material.textfield.TextInputLayout
 
     @BindView(R.id.signInEditPassword)
-    lateinit var signInEditPassword: TextInputEditText
+    lateinit var signInEditPassword: com.google.android.material.textfield.TextInputEditText
     @BindView(R.id.sign_in_button)
     lateinit var sign_in_button: SignInButton
 
@@ -100,14 +97,14 @@ class LoginFragment : MvpAppCompatFragment(), GoogleApiClient.OnConnectionFailed
 
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        val view = layoutInflater.inflate(R.layout.fragment_login, container, false)
+        val view = inflater.inflate(R.layout.fragment_login, container, false)
         ButterKnife.bind(this, view)
         val gso = GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
                 .requestEmail()
                 .build()
-
+// Todo reveal the issue with ".enableAutoManage" later
         googleApiClient = GoogleApiClient.Builder(this.context!!)
-                .enableAutoManage(FragmentActivity(), this)
+//                .enableAutoManage(FragmentActivity(), this)
                 .addApi(Auth.GOOGLE_SIGN_IN_API, gso)
                 .build()
 
@@ -123,10 +120,11 @@ class LoginFragment : MvpAppCompatFragment(), GoogleApiClient.OnConnectionFailed
             onClickLoginButton()
         }
 
+// Todo reveal the issue with "support.v4" later
         AppEventsLogger.activateApp(this.context)
         callbackManager = CallbackManager.Factory.create()
         loginButton.setReadPermissions(Arrays.asList("public_profile", "user_birthday", "user_gender"))
-        loginButton.fragment = this
+//        loginButton.fragment = this
         loginButton.registerCallback(callbackManager,
                 object : FacebookCallback<LoginResult> {
 

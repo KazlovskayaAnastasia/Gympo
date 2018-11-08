@@ -7,14 +7,14 @@ apply plugin: 'kotlin-android-extensions'
 apply plugin: 'kotlin-kapt'
 
 android {
-    compileSdkVersion 27
+    compileSdkVersion 28
     defaultConfig {
         applicationId "com.gmail.martsulgp.gympo"
-        minSdkVersion 21
-        targetSdkVersion 27
+        minSdkVersion 23
+        targetSdkVersion 28
         versionCode 1
         versionName "1.0"
-        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
     buildTypes {
         release {
@@ -29,36 +29,37 @@ android {
 
 dependencies {
 
-    final MOXY_VERSION = '1.5.3'
-    final RETROFIT_VERSION = '2.3.0'
+    final MOXY_VERSION = '1.5.5'
+    final RETROFIT_VERSION = '2.4.0'
     final RX_JAVA_VERSION = '2.1.2'
-    final RX_ANDROID_VERSION = '2.0.1'
-    final KOIN_VERSION = '0.9.1'
-    final BUTTER_KNIFE_VERSION = '8.8.1'
-    final ANDROID_SUPPORT_VERSION = '27.1.1'
+    final RX_ANDROID_VERSION = '2.1.0'
+    final KOIN_VERSION = '1.0.1'
+    final BUTTER_KNIFE_VERSION = '9.0.0-rc1'
+    final ANDROID_SUPPORT_VERSION = '28.0.0'
     final TIMBER_VERSION = '4.6.1'
 
     implementation fileTree(dir: 'libs', include: ['*.jar'])
     implementation"org.jetbrains.kotlin:kotlin-stdlib-jdk7:$KOTLIN_VERSION"
     //noinspection GradleCompatible
-    implementation "com.android.support:design:$ANDROID_SUPPORT_VERSION"
-    implementation "com.android.support:support-v4:$ANDROID_SUPPORT_VERSION"
-    implementation "com.android.support:appcompat-v7:$ANDROID_SUPPORT_VERSION"
-    implementation "com.android.support:cardview-v7:$ANDROID_SUPPORT_VERSION"
-    implementation "com.android.support:recyclerview-v7:$ANDROID_SUPPORT_VERSION"
+    implementation 'com.google.android.material:material:1.1.0-alpha01'
+    implementation 'androidx.legacy:legacy-support-v4:1.0.0'
+    implementation 'androidx.appcompat:appcompat:1.0.1'
+    implementation 'androidx.cardview:cardview:1.0.0'
+    implementation 'androidx.recyclerview:recyclerview:1.0.0'
     implementation "com.jakewharton.timber:timber:$TIMBER_VERSION"
-    implementation 'com.android.support.constraint:constraint-layout:1.1.3'
+    implementation 'androidx.constraintlayout:constraintlayout:2.0.0-alpha2'
     testImplementation 'junit:junit:4.12'
     implementation 'com.google.android.gms:play-services-auth:16.0.1'
-    androidTestImplementation 'com.android.support.test:runner:1.0.2'
-    androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'
+    androidTestImplementation 'androidx.test:runner:1.1.0'
+    androidTestImplementation 'androidx.test.espresso:espresso-core:3.1.0'
     implementation 'com.squareup.okhttp3:logging-interceptor:3.9.0'
 
     // Koin
     implementation "org.koin:koin-android:$KOIN_VERSION"
     // Moxy
     implementation "com.arello-mobile:moxy:$MOXY_VERSION"
-    implementation "com.arello-mobile:moxy-app-compat:$MOXY_VERSION"
+    implementation "com.arello-mobile:moxy-android:$MOXY_VERSION"
+//    implementation "com.arello-mobile:moxy-app-compat:$MOXY_VERSION"
     kapt "com.arello-mobile:moxy-compiler:$MOXY_VERSION"
     // Retrofit
     implementation "com.squareup.retrofit2:retrofit:$RETROFIT_VERSION"
@@ -72,4 +73,6 @@ dependencies {
     kapt "com.jakewharton:butterknife-compiler:$BUTTER_KNIFE_VERSION"
 
     implementation 'com.facebook.android:facebook-android-sdk:4.38.1'
+
+    implementation "com.android.support:support-v4:$ANDROID_SUPPORT_VERSION"
 }
