@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:background="@color/gray"
     android:orientation="vertical"
     android:textSize="20sp">
@@ -18,9 +19,8 @@
             android:id="@+id/signInEditLogin"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:inputType="textEmailAddress"
             android:hint="@string/email"
-            android:text="@={viewModel.email2send}" />
+            android:inputType="textEmailAddress" />
     </android.support.design.widget.TextInputLayout>
 
     <android.support.design.widget.TextInputLayout
@@ -34,9 +34,8 @@
             android:id="@+id/signInEditPassword"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:inputType="textPassword"
             android:hint="@string/password"
-            android:text="@={viewModel.password2send}" />
+            android:inputType="textPassword" />
     </android.support.design.widget.TextInputLayout>
 
     <Button
@@ -46,7 +45,6 @@
         android:layout_gravity="center"
         android:layout_marginBottom="150dp"
         android:background="@color/calmBlue"
-        android:onClick="@{() -> viewModel.onSignInClick()}"
         android:text="@string/log_in"
         android:textAllCaps="false"
         android:textColor="@color/headerText"
@@ -54,6 +52,31 @@
         app:layout_constraintBottom_toTopOf="@+id/signUpQuestion"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
+
+    <com.google.android.gms.common.SignInButton
+        android:id="@+id/sign_in_button"
+        android:layout_width="67dp"
+        android:layout_height="63dp"
+        android:layout_gravity="center"
+        android:layout_marginTop="24dp"
+        android:padding="10dp"
+        app:buttonSize="icon_only"
+        app:layout_constraintEnd_toEndOf="@+id/signInButton"
+        app:layout_constraintHorizontal_bias="0.502"
+        app:layout_constraintStart_toStartOf="@+id/signInButton"
+        app:layout_constraintTop_toBottomOf="@+id/signInButton"
+        tools:ignore="MissingConstraints" />
+
+    <com.facebook.login.widget.LoginButton
+        android:id="@+id/facebook_login_Button"
+        android:layout_width="177dp"
+        android:layout_height="23dp"
+        android:layout_marginTop="8dp"
+        app:layout_constraintEnd_toEndOf="@+id/signInButton"
+        app:layout_constraintHorizontal_bias="0.507"
+        app:layout_constraintStart_toStartOf="@+id/signInButton"
+        app:layout_constraintTop_toBottomOf="@+id/sign_in_button">
+    </com.facebook.login.widget.LoginButton>
 
     <RelativeLayout
         android:id="@+id/signUpQuestion"
@@ -78,7 +101,6 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="15dp"
             android:layout_toEndOf="@id/questionUp"
-            android:onClick="@{() -> viewModel.onSignUpClick()}"
             android:text="@string/signUp"
             android:textColor="@color/brightBlue"
             android:textSize="16sp" />
@@ -89,10 +111,15 @@
         android:id="@+id/loginProgressBar"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:layout_constraintTop_toTopOf="parent"
+        android:visibility="gone"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        android:visibility="gone" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+   <!-- <FrameLayout
+        android:id="@+id/loginContainer"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"></FrameLayout>-->
 
 </android.support.constraint.ConstraintLayout>

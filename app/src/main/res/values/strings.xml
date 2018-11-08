@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Workout Partner</string>
+    <string name="app_name">Gympo</string>
     <string name="title_activity_navigation">NavigationActivity</string>
     <string name="title_trainings">Trainings</string>
     <string name="title_progress">Progress</string>
@@ -44,6 +44,10 @@
     <string name="required_time">Required time:</string>
     <string name="rest_time">Rest time:</string>
     <string name="sets_header">Sets</string>
+    <string name="cancel_login">Cansel</string>
+    <string name="error_login">Error</string>
+    <string name="facebook_app_id">1955850738065509</string>
+    <string name="fb_login_protocol_scheme">fb1955850738065509</string>
 
 
     <string-array name="weekdays">
