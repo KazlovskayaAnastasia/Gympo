@@ -101,6 +101,7 @@ class RegistryFragment : MvpFragment(), GoogleApiClient.OnConnectionFailedListen
         val surname = signUpEditSurname.text.toString()
         val email = signUpEditEmail.text.toString()
         val password = signUpEditPassword.text.toString()
+        validateData()
         presenter.onRegistryPress(email, password, name, surname)
     }
 
@@ -116,6 +117,60 @@ class RegistryFragment : MvpFragment(), GoogleApiClient.OnConnectionFailedListen
             RegistryPresenter.DebugLevel.DEBUG -> Log.d(RegistryActivity.TAG, message)
             RegistryPresenter.DebugLevel.ERROR -> Log.e(RegistryActivity.TAG, message)
         }
+    }
+
+    private fun validateData():Boolean {
+
+        val nameIsEmpty =  getString(R.string.NameIsEmpty)
+        val surnameIsEmpty =  getString(R.string.SurnameIsEmpty)
+        val emailIsEmpty =  getString(R.string.emailIsEmpty)
+        val emailIsNotContainSymbol =  getString(R.string.emailIsNotContainSymbol)
+        val passwordIsEmpty =  getString(R.string.passwordIsEmpty)
+        val invalidLengthPassword =  getString(R.string.invalidLengthOfPassword)
+
+        //validate of name
+        var result = true
+        val name = signInEditName.text.toString()
+        if (name.isEmpty()) {
+            signInEditName.error = nameIsEmpty
+            result = false
+        }
+        else
+            layout_signInEditName.isErrorEnabled = false
+
+        //validate of surname
+        val surname = signUpEditSurname.text.toString()
+        if (surname.isEmpty()) {
+            signUpEditSurname.error = surnameIsEmpty
+            result = false
+        }
+        else
+            layout_signUpEditSurname.isErrorEnabled = false
+
+        //validate of email
+        val email = signUpEditEmail.text.toString()
+        if (email.isEmpty()) {
+            signUpEditEmail.error = emailIsEmpty
+            result = false
+        }
+        else if (!email.contains("@", true)) {
+            signUpEditEmail.error =  emailIsNotContainSymbol
+            result = false
+        }
+
+        //validate of password
+        val password =  signUpEditPassword.text.toString()
+        if( password.isEmpty()){
+            signUpEditPassword.error =  passwordIsEmpty
+            layout_signUpEditPassword.isErrorEnabled = true
+            result = false
+        }
+        else if(password.length in 11 downTo 2){
+            signUpEditPassword.error = invalidLengthPassword
+            layout_signUpEditPassword.isErrorEnabled = true
+            result = false
+        }
+        return result
     }
 }
 

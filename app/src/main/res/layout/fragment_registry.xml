@@ -42,14 +42,16 @@
             style="@style/textInputStyle"
             app:layout_constraintBottom_toTopOf="@+id/layout_signUpEditPassword"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent">
+            app:layout_constraintStart_toStartOf="parent"
+            app:errorEnabled="true">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/signUpEditEmail"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:inputType="textEmailAddress"
-                android:hint="@string/email" />
+                android:hint="@string/email"
+                app:errorEnabled="true"/>
         </com.google.android.material.textfield.TextInputLayout>
 
         <com.google.android.material.textfield.TextInputLayout
@@ -57,7 +59,9 @@
             style="@style/textInputStyle"
             app:layout_constraintBottom_toTopOf="@+id/SignUpButton"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent">
+            app:layout_constraintStart_toStartOf="parent"
+            app:errorEnabled="true"
+            app:counterMaxLength="10">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/signUpEditPassword"

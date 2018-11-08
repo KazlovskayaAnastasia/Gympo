@@ -21,9 +21,9 @@ class RegistryPresenter(private val userDataRepository: UserDataRepository) : Mv
                 .doOnTerminate { viewState.progressBarVisibility(false) }
                 .subscribe(
                         { it: UserDataResponse ->
-                            viewState.logger(it.email ?: "", RegistryPresenter.DebugLevel.DEBUG)
-                            viewState.logger(it.name ?: "", RegistryPresenter.DebugLevel.DEBUG)
-                            viewState.logger(it.surname ?: "", RegistryPresenter.DebugLevel.DEBUG)
+                            viewState.logger(it.email ?: "", DebugLevel.DEBUG)
+                            viewState.logger(it.name ?: "", DebugLevel.DEBUG)
+                            viewState.logger(it.surname ?: "", DebugLevel.DEBUG)
                         },
                         { _ ->
                             Log.e("Register data", "Error")
