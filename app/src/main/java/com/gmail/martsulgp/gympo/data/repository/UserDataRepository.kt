@@ -7,8 +7,9 @@ import io.reactivex.Observable
 import io.reactivex.Single
 
 interface UserDataRepository {
-    fun logInUser(email: String, password: String) : Observable<UserDataResponse>
-    fun registerUser(email: String, password: String, name: String, surname: String) : Observable<UserDataResponse>
-    fun updateUserData(user: UserDataRequest) : Completable
-    fun loginWithFB(token: String) : Single<UserDataResponse>
+    fun logInUser(email: String, password: String): Observable<UserDataResponse>
+    fun registerUser(email: String, password: String, name: String, surname: String): Observable<UserDataResponse>
+    fun updateUserData(user: UserDataRequest): Completable
+    fun loginWithFB(token: String): Single<UserDataResponse>
+    fun checkToken(token: String): Single<Boolean>
 }

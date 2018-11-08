@@ -11,4 +11,6 @@ interface LoginView : MvpView {
     fun handleSignInResult(result: GoogleSignInResult)
     fun logger(message: String, debugLevel: LoginPresenter.DebugLevel)
     fun updateFbUser()
+    fun showAlertDialog(message: String?)
+    fun goToMainMenu()
 }

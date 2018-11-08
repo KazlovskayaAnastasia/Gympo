@@ -26,7 +26,7 @@ interface BackendlessApi {
     fun regUser(@Body profile: RegisterRequest): Observable<UserDataResponse>
 
     @GET("users/isvalidusertoken/{token}")
-    fun checkToken(@Path("token") param: String): Observable<Boolean>
+    fun checkToken(@Path("token") param: String): Single<Boolean>
 
     //    @GET("users/logout")
 //    abstract fun logOut(@Header("user-token") token: String): Observable<Response<Void>>

@@ -11,12 +11,15 @@ import io.reactivex.Observable
 import io.reactivex.Single
 
 class UserDataRepositoryImpl : UserDataRepository {
+
     private val api = BackendlessApi.create()
     private val currentUser = UserData
 
     override fun loginWithFB(token: String): Single<UserDataResponse> =
             api.loginUserWithFB(token)
 
+    override fun checkToken(token: String): Single<Boolean> =
+        api.checkToken(token)
 
 
     override fun updateUserData(user: UserDataRequest): Completable =

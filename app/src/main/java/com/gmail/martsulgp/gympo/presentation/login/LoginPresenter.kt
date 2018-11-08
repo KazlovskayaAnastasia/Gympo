@@ -7,6 +7,8 @@ import com.arellomobile.mvp.MvpPresenter
 import com.facebook.Profile
 import com.gmail.martsulgp.gympo.data.model.response.UserDataResponse
 import com.gmail.martsulgp.gympo.data.repository.UserDataRepository
+import com.gmail.martsulgp.gympo.presentation.StartActivity.Companion.USER_TOKEN
+import com.gmail.martsulgp.gympo.presentation.StartActivity.Companion.pref
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.schedulers.Schedulers
 
@@ -23,11 +25,17 @@ class LoginPresenter(private val userDataRepository: UserDataRepository) : MvpPr
                 .doOnTerminate { viewState.progressBarVisibility(false) }
                 .subscribe(
                         { it: UserDataResponse ->
+                            pref.edit()
+                                    .putString(USER_TOKEN, it.token)
+                                    .apply()
+                            viewState.goToMainMenu()
+
                             viewState.logger(it.email ?: "", LoginPresenter.DebugLevel.DEBUG)
-                            viewState.logger(it.name ?: "", LoginPresenter.DebugLevel.DEBUG)
+                            viewState.logger(it.toString(), LoginPresenter.DebugLevel.DEBUG)
                         },
                         { _ ->
-                            Log.e("Login data", "Eror in login")
+                            viewState.showAlertDialog("Invalid login or password! Try again or registry in application")
+                            Log.e("Login data", "Error in login")
                         }
                 )
     }
@@ -38,16 +46,19 @@ class LoginPresenter(private val userDataRepository: UserDataRepository) : MvpPr
                 .observeOn(AndroidSchedulers.mainThread())
                 .doOnSubscribe { viewState.progressBarVisibility(true) }
                 .subscribe(
-                        { user -> viewState.updateFbUser()
-                            viewState.logger(user.email?: "", DebugLevel.DEBUG)
+                        { user ->
+                            viewState.updateFbUser()
+                            viewState.logger(user.email ?: "", DebugLevel.DEBUG)
                         },
-                        {error -> viewState.logger(error.message?: "", LoginPresenter.DebugLevel.ERROR)}
+                        { error ->
+                            viewState.logger(error.message ?: "", LoginPresenter.DebugLevel.ERROR)
+                        }
                 )
         viewState.progressBarVisibility(false)
     }
 
     fun updateUserData(fbProfile: Profile) {
-        viewState.logger(fbProfile.name,DebugLevel.DEBUG)
+        viewState.logger(fbProfile.name, DebugLevel.DEBUG)
     }
 
 

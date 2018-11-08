@@ -22,7 +22,9 @@ import com.facebook.login.LoginResult
 import com.facebook.login.widget.LoginButton
 import com.gmail.martsulgp.gympo.R
 import com.gmail.martsulgp.gympo.data.repository.UserDataRepository
+import com.gmail.martsulgp.gympo.extras.InfoDialog
 import com.gmail.martsulgp.gympo.presentation.TestFragment
+import com.gmail.martsulgp.gympo.presentation.menu.MainMenuActivity
 import com.gmail.martsulgp.gympo.presentation.registry.RegistryFragment
 import com.google.android.gms.auth.api.Auth
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions
@@ -89,7 +91,7 @@ class LoginFragment : MvpFragment(), GoogleApiClient.OnConnectionFailedListener,
         }
     }
 
-    override fun onCreate(savedInstanceState : Bundle?) {
+    override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         FacebookSdk.sdkInitialize(this.context)
         AppEventsLogger.activateApp(this.context)
@@ -129,8 +131,8 @@ class LoginFragment : MvpFragment(), GoogleApiClient.OnConnectionFailedListener,
                 object : FacebookCallback<LoginResult> {
 
                     override fun onSuccess(loginResult: LoginResult) {
-                        if(Profile.getCurrentProfile() == null){
-                            tracker = object : ProfileTracker(){
+                        if (Profile.getCurrentProfile() == null) {
+                            tracker = object : ProfileTracker() {
                                 override fun onCurrentProfileChanged(oldProfile: Profile?, currentProfile: Profile?) {
                                     tracker.stopTracking()
                                 }
@@ -156,9 +158,10 @@ class LoginFragment : MvpFragment(), GoogleApiClient.OnConnectionFailedListener,
                         request.parameters = parameters
                         request.executeAsync()
 //  TODO
-                        if(!request.accessToken.token.isNullOrBlank())
+                        if (!request.accessToken.token.isNullOrBlank())
                             presenter.exchangeWithBackendless(request.accessToken.token)
                     }
+
                     override fun onCancel() {}
                     override fun onError(error: FacebookException) {}
                 })
@@ -205,15 +208,15 @@ class LoginFragment : MvpFragment(), GoogleApiClient.OnConnectionFailedListener,
         }
     }
 
-    override fun updateFbUser(){
+    override fun updateFbUser() {
         presenter.updateUserData(fbProfile)
     }
 
     //Backendless
-    private fun onClickLoginButton(){
-        val email= signInEditLogin.text.toString()
+    private fun onClickLoginButton() {
+        val email = signInEditLogin.text.toString()
         val password = signInEditPassword.text.toString()
-        presenter.onLoginPress(email,password)
+        presenter.onLoginPress(email, password)
     }
 
     //Navigation
@@ -240,6 +243,21 @@ class LoginFragment : MvpFragment(), GoogleApiClient.OnConnectionFailedListener,
 
     override fun handleSignInResult(result: GoogleSignInResult) {
         Log.d(TAG, "handleSignInResult:" + result.isSuccess)
+    }
+
+    override fun showAlertDialog(message: String?) {
+        InfoDialog.newInstance(InfoDialog.DialogVO(
+                message = message ?: "",
+                buttons = arrayOf(InfoDialog.getCancelButton(context!!),
+                        InfoDialog.DialogButton(InfoDialog.ButtonType.POSITIVE, "Registry") {
+                            goToSignUp()
+                        })
+        )).show(fragmentManager, "TAG")
+    }
+
+    override fun goToMainMenu() {
+        val intent = Intent(context, MainMenuActivity::class.java)
+        startActivity(intent)
     }
 }
 
