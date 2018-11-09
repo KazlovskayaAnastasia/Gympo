@@ -1,4 +1,4 @@
-package com.gmail.martsulgp.gympo.presentation.login
+package com.gmail.martsulgp.gympo.presentation.auth.login
 
 import android.annotation.SuppressLint
 import android.util.Log
@@ -34,7 +34,7 @@ class LoginPresenter(private val userDataRepository: UserDataRepository) : MvpPr
                             viewState.logger(it.toString(), LoginPresenter.DebugLevel.DEBUG)
                         },
                         { _ ->
-                            viewState.showAlertDialog("Invalid login or password! Try again or registry in application")
+                            viewState.showAlertDialog("Invalid login or password! Try again or register in application")
                             Log.e("Login data", "Error in login")
                         }
                 )

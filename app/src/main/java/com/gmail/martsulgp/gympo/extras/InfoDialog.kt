@@ -12,18 +12,18 @@ import java.io.Serializable
 open class InfoDialog : DialogFragment() {
     companion object {
         private const val KEY_DIALOG_VO = "KEY_DIALOG_VO"
-
+        lateinit var dialog : InfoDialog
         fun getOkButton(context: Context) = DialogButton(ButtonType.POSITIVE, context.getString(R.string.ok).toUpperCase(), {})
         fun getYesButton(context: Context) = DialogButton(ButtonType.POSITIVE, context.getString(R.string.yes).capitalize(), {})
         fun getNoButton(context: Context) = DialogButton(ButtonType.NEGATIVE, context.getString(R.string.no).capitalize(), {})
         fun getCloseButton(context: Context, function: () -> kotlin.Unit) = DialogButton(ButtonType.NEGATIVE, context.getString(R.string.close).capitalize()) { InfoDialog().onButtonClick(function) }
-        fun getCancelButton(context: Context) = DialogButton(ButtonType.NEGATIVE, context.getString(R.string.cancel).capitalize()) {}
+        fun getCancelButton(context: Context, function: () -> kotlin.Unit) = DialogButton(ButtonType.NEGATIVE, context.getString(R.string.cancel).capitalize()) { InfoDialog().onButtonClick(function) }
         fun getContinueButton(context: Context) = DialogButton(ButtonType.POSITIVE, context.getString(R.string.continue_button).capitalize()) {}
         fun getYesNoButtons(context: Context) = arrayOf(getYesButton(context), getNoButton(context))
-        fun getCancelContinueButtons(context: Context) = arrayOf(getCancelButton(context), getContinueButton(context))
+//        fun getCancelContinueButtons(context: Context) = arrayOf(getCancelButton(context), getContinueButton(context))
 
         fun newInstance(dialogVO: DialogVO): InfoDialog {
-            val dialog = InfoDialog()
+            dialog = InfoDialog()
             val bundle = Bundle()
             bundle.putSerializable(KEY_DIALOG_VO, dialogVO)
             dialog.arguments = bundle

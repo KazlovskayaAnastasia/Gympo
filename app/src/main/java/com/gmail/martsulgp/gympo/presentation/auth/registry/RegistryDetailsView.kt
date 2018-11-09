@@ -1,4 +1,4 @@
-package com.gmail.martsulgp.gympo.presentation.registry
+package com.gmail.martsulgp.gympo.presentation.auth.registry
 
 import com.arellomobile.mvp.MvpView
 

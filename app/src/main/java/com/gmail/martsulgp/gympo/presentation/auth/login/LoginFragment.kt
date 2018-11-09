@@ -1,4 +1,4 @@
-package com.gmail.martsulgp.gympo.presentation.login
+package com.gmail.martsulgp.gympo.presentation.auth.login
 
 import android.content.Intent
 import android.os.Bundle
@@ -24,8 +24,9 @@ import com.gmail.martsulgp.gympo.R
 import com.gmail.martsulgp.gympo.data.repository.UserDataRepository
 import com.gmail.martsulgp.gympo.extras.InfoDialog
 import com.gmail.martsulgp.gympo.presentation.TestFragment
+import com.gmail.martsulgp.gympo.presentation.auth.AuthActivity
+import com.gmail.martsulgp.gympo.presentation.auth.registry.RegistryFragment
 import com.gmail.martsulgp.gympo.presentation.menu.MainMenuActivity
-import com.gmail.martsulgp.gympo.presentation.registry.RegistryFragment
 import com.google.android.gms.auth.api.Auth
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions
 import com.google.android.gms.auth.api.signin.GoogleSignInResult
@@ -172,7 +173,7 @@ class LoginFragment : MvpFragment(), GoogleApiClient.OnConnectionFailedListener,
 //    private fun goMainScreen() {
 //        if (Profile.getCurrentProfile() != null) {
 //            val profile = Profile.getCurrentProfile()
-//            val intent = Intent(this.context, LoginActivity::class.java)
+//            val intent = Intent(this.context, AuthActivity::class.java)
 //            intent.putExtra("name", profile.firstName)
 //            intent.putExtra("id", profile.id)
 //            startActivity(intent)
@@ -203,8 +204,8 @@ class LoginFragment : MvpFragment(), GoogleApiClient.OnConnectionFailedListener,
 
     override fun logger(message: String, debugLevel: LoginPresenter.DebugLevel) {
         when (debugLevel) {
-            LoginPresenter.DebugLevel.DEBUG -> Log.d(LoginActivity.TAG, message)
-            LoginPresenter.DebugLevel.ERROR -> Log.e(LoginActivity.TAG, message)
+            LoginPresenter.DebugLevel.DEBUG -> Log.d(AuthActivity.TAG, message)
+            LoginPresenter.DebugLevel.ERROR -> Log.e(AuthActivity.TAG, message)
         }
     }
 
@@ -248,8 +249,8 @@ class LoginFragment : MvpFragment(), GoogleApiClient.OnConnectionFailedListener,
     override fun showAlertDialog(message: String?) {
         InfoDialog.newInstance(InfoDialog.DialogVO(
                 message = message ?: "",
-                buttons = arrayOf(InfoDialog.getCancelButton(context!!),
-                        InfoDialog.DialogButton(InfoDialog.ButtonType.POSITIVE, "Registry") {
+                buttons = arrayOf(InfoDialog.getCancelButton(context!!){  },
+                        InfoDialog.DialogButton(InfoDialog.ButtonType.POSITIVE, "Register") {
                             goToSignUp()
                         })
         )).show(fragmentManager, "TAG")

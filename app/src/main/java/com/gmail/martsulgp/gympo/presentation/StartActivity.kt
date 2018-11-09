@@ -13,7 +13,8 @@ import butterknife.ButterKnife
 import com.bumptech.glide.Glide
 import com.gmail.martsulgp.gympo.R
 import com.gmail.martsulgp.gympo.data.repository.UserDataRepository
-import com.gmail.martsulgp.gympo.presentation.login.LoginActivity
+import com.gmail.martsulgp.gympo.presentation.auth.AuthActivity
+import com.gmail.martsulgp.gympo.presentation.testSamples.TestActivity
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.schedulers.Schedulers
 import org.koin.android.ext.android.inject
@@ -54,12 +55,12 @@ class StartActivity : Activity() {
                     .observeOn(AndroidSchedulers.mainThread())
                     .subscribe ({ it ->
                         if (it) {
-                            goNext(MainActivity())
+                            goNext(TestActivity())
                         }else{
-                            goNext(LoginActivity())
+                            goNext(AuthActivity())
                         }
                     },
-            {_ -> goNext(LoginActivity())})}, 1500L)
+            {_ -> goNext(AuthActivity())})}, 1500L)
 
         } catch (e: Exception) {
 

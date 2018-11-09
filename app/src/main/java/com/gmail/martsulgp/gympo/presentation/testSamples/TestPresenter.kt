@@ -1,4 +1,4 @@
-package com.gmail.martsulgp.gympo.presentation
+package com.gmail.martsulgp.gympo.presentation.testSamples
 
 import android.annotation.SuppressLint
 import com.arellomobile.mvp.InjectViewState
@@ -8,7 +8,7 @@ import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.schedulers.Schedulers
 
 @InjectViewState
-class MainPresenter(val userDataRepository: UserDataRepository) : MvpPresenter<MainView>() {
+class TestPresenter(val userDataRepository: UserDataRepository) : MvpPresenter<TestView>() {
 
     @SuppressLint("CheckResult")
     fun onPageLoaded(){

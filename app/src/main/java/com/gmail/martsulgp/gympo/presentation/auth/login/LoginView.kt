@@ -1,4 +1,4 @@
-package com.gmail.martsulgp.gympo.presentation.login
+package com.gmail.martsulgp.gympo.presentation.auth.login
 
 import com.arellomobile.mvp.MvpView
 import com.google.android.gms.auth.api.signin.GoogleSignInResult

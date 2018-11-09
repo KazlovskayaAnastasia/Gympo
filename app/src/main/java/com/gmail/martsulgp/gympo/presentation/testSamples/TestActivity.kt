@@ -1,4 +1,4 @@
-package com.gmail.martsulgp.gympo.presentation
+package com.gmail.martsulgp.gympo.presentation.testSamples
 
 import android.os.Bundle
 import android.util.Log
@@ -13,10 +13,10 @@ import com.arellomobile.mvp.presenter.ProvidePresenter
 import com.arellomobile.mvp.presenter.ProvidePresenterTag
 import com.gmail.martsulgp.gympo.R
 import com.gmail.martsulgp.gympo.data.repository.UserDataRepository
-import com.gmail.martsulgp.gympo.presentation.registry.RegistryDetailsFragment
+import com.gmail.martsulgp.gympo.presentation.auth.registry.RegistryDetailsFragment
 import org.koin.android.ext.android.inject
 
-class MainActivity : MvpActivity(), MainView {
+class TestActivity : MvpActivity(), TestView {
 
     @BindView(R.id.mainProgress)
     lateinit var progressBar: ProgressBar
@@ -30,20 +30,20 @@ class MainActivity : MvpActivity(), MainView {
     }
 
     @InjectPresenter(type = PresenterType.GLOBAL)
-    lateinit var presenter: MainPresenter
+    lateinit var presenter: TestPresenter
 
     private val userDataRepository: UserDataRepository by inject()
 
-    @ProvidePresenterTag(presenterClass = MainPresenter::class, type = PresenterType.GLOBAL)
+    @ProvidePresenterTag(presenterClass = TestPresenter::class, type = PresenterType.GLOBAL)
     fun provideDialogPresenterTag(): String = "Main"
 
     @ProvidePresenter(type = PresenterType.GLOBAL)
-    fun provideDialogPresenter() = MainPresenter(userDataRepository)
+    fun provideDialogPresenter() = TestPresenter(userDataRepository)
 
-    override fun logger(message : String, debugLevel : MainPresenter.DebugLevel) {
+    override fun logger(message : String, debugLevel : TestPresenter.DebugLevel) {
         when(debugLevel){
-            MainPresenter.DebugLevel.DEBUG -> Log.d(TAG, message)
-            MainPresenter.DebugLevel.ERROR -> Log.e(TAG, message)
+            TestPresenter.DebugLevel.DEBUG -> Log.d(TAG, message)
+            TestPresenter.DebugLevel.ERROR -> Log.e(TAG, message)
         }
     }
 

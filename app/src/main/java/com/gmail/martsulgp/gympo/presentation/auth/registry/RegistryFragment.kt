@@ -1,4 +1,4 @@
-package com.gmail.martsulgp.gympo.presentation.registry
+package com.gmail.martsulgp.gympo.presentation.auth.registry
 
 import android.os.Bundle
 import android.util.Log
@@ -17,7 +17,8 @@ import com.arellomobile.mvp.presenter.ProvidePresenter
 import com.arellomobile.mvp.presenter.ProvidePresenterTag
 import com.gmail.martsulgp.gympo.R
 import com.gmail.martsulgp.gympo.data.repository.UserDataRepository
-import com.gmail.martsulgp.gympo.presentation.login.LoginFragment
+import com.gmail.martsulgp.gympo.presentation.auth.AuthActivity
+import com.gmail.martsulgp.gympo.presentation.auth.login.LoginFragment
 import com.google.android.gms.common.ConnectionResult
 import com.google.android.gms.common.api.GoogleApiClient
 import org.koin.android.ext.android.inject
@@ -114,8 +115,8 @@ class RegistryFragment : MvpFragment(), GoogleApiClient.OnConnectionFailedListen
 
     override fun logger(message: String, debugLevel: RegistryPresenter.DebugLevel) {
         when (debugLevel) {
-            RegistryPresenter.DebugLevel.DEBUG -> Log.d(RegistryActivity.TAG, message)
-            RegistryPresenter.DebugLevel.ERROR -> Log.e(RegistryActivity.TAG, message)
+            RegistryPresenter.DebugLevel.DEBUG -> Log.d(AuthActivity.TAG, message)
+            RegistryPresenter.DebugLevel.ERROR -> Log.e(AuthActivity.TAG, message)
         }
     }
 

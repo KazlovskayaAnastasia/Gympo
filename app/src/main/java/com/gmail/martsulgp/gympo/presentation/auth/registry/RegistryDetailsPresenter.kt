@@ -1,4 +1,4 @@
-package com.gmail.martsulgp.gympo.presentation.registry
+package com.gmail.martsulgp.gympo.presentation.auth.registry
 
 import android.annotation.SuppressLint
 import android.util.Log
