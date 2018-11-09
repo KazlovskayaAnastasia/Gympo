@@ -74,6 +74,11 @@
         <item name="keep_trim">Keep trim</item>
     </string-array>
 
+    <string-array name="language">
+        <item name="english">English</item>
+        <item name="russian">Russian</item>
+    </string-array>
+
     <string-array name="period">
         <item name="trainee">No value</item>
         <item name="beginner">0 - 2 years</item>

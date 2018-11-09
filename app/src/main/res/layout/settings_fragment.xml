@@ -8,7 +8,122 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
-        android:text="Settings here"
-        android:textSize="20dp"/>
+        android:text="Settings"
+        android:layout_marginTop="20dp"
+        android:textSize="24dp"/>
+
+    <RelativeLayout
+        android:id="@+id/notification_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginTop="20dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginEnd="20dp">
+
+        <TextView
+            android:id="@+id/tv_notification"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="On/Off notification"
+            android:textSize="20sp"/>
+
+        <Switch
+            android:id="@+id/switch_notification"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_alignParentEnd="true"/>
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/language_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginEnd="20dp">
+
+        <TextView
+            android:id="@+id/tv_language"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Change language"
+            android:textSize="20sp"/>
+
+        <Spinner
+            android:id="@+id/spinner_destination"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:entries="@array/language"/>
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/fingerprint_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginTop="20dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginEnd="20dp">
+
+        <TextView
+            android:id="@+id/tv_fingerprint"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="On/Off login with fingerprint"
+            android:textSize="20sp"/>
+
+        <Switch
+            android:id="@+id/switch_fingerprint"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_alignParentEnd="true"/>
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/set_timer_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginTop="10dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginEnd="20dp">
+
+        <TextView
+            android:id="@+id/tv_set_timer"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Set timer"
+            android:layout_centerVertical="true"
+            android:textSize="20sp"/>
+
+        <Button
+            android:id="@+id/set_timer"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:text="Set timer"
+            android:textAllCaps="false"
+            android:layout_alignParentEnd="true"/>
+
+    </RelativeLayout>
+
+    <Button
+        android:id="@+id/btn_logout"
+        android:layout_width="150dp"
+        android:layout_height="wrap_content"
+        android:background="@color/calmBlue"
+        android:text="Log out"
+        android:textAllCaps="false"
+        android:textColor="@color/headerText"
+        android:layout_gravity="center"
+        android:layout_marginTop="50dp"
+        android:textSize="24sp" />
 
 </LinearLayout>
