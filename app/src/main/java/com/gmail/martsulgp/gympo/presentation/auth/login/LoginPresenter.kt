@@ -5,7 +5,8 @@ import android.util.Log
 import com.arellomobile.mvp.InjectViewState
 import com.arellomobile.mvp.MvpPresenter
 import com.facebook.Profile
-import com.gmail.martsulgp.gympo.data.model.response.UserDataResponse
+import com.gmail.martsulgp.gympo.data.model.entity.UserData
+import com.gmail.martsulgp.gympo.data.model.entity.UserDataObj
 import com.gmail.martsulgp.gympo.data.repository.UserDataRepository
 import com.gmail.martsulgp.gympo.presentation.StartActivity.Companion.USER_TOKEN
 import com.gmail.martsulgp.gympo.presentation.StartActivity.Companion.pref
@@ -24,14 +25,14 @@ class LoginPresenter(private val userDataRepository: UserDataRepository) : MvpPr
                 .doOnSubscribe { viewState.progressBarVisibility(true) }
                 .doOnTerminate { viewState.progressBarVisibility(false) }
                 .subscribe(
-                        { it: UserDataResponse ->
+                        { it: UserData ->
                             pref.edit()
                                     .putString(USER_TOKEN, it.token)
                                     .apply()
+                            UserDataObj.setData(it)
                             viewState.goToMainMenu()
-
-                            viewState.logger(it.email ?: "", LoginPresenter.DebugLevel.DEBUG)
-                            viewState.logger(it.toString(), LoginPresenter.DebugLevel.DEBUG)
+//                            viewState.logger(UserDataObj.email ?: "", LoginPresenter.DebugLevel.DEBUG)
+//                            viewState.logger(UserDataObj.toString(), LoginPresenter.DebugLevel.DEBUG)
                         },
                         { _ ->
                             viewState.showAlertDialog("Invalid login or password! Try again or register in application")
