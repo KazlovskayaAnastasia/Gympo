@@ -7,6 +7,11 @@ import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.GravityCompat
 import com.gmail.martsulgp.gympo.R
+import com.gmail.martsulgp.gympo.presentation.menu.ExerciseMenu.ExerciseFragment
+import com.gmail.martsulgp.gympo.presentation.menu.GymsMapMenu.GymsMapFragment
+import com.gmail.martsulgp.gympo.presentation.menu.ProfileMenu.ProfileFragment
+import com.gmail.martsulgp.gympo.presentation.menu.SettingsMenu.SettingsFragment
+import com.gmail.martsulgp.gympo.presentation.menu.StatisticMenu.StatisticFragment
 import com.google.android.material.navigation.NavigationView
 import com.google.android.material.snackbar.Snackbar
 import kotlinx.android.synthetic.main.activity_main_menu.*
@@ -58,23 +63,20 @@ class MainMenuActivity : AppCompatActivity(), NavigationView.OnNavigationItemSel
     override fun onNavigationItemSelected(item: MenuItem): Boolean {
         // Handle navigation view item clicks here.
         when (item.itemId) {
-            R.id.nav_camera -> {
-                // Handle the camera action
+            R.id.nav_exercise -> {
+                fragmentManager.beginTransaction().addToBackStack(null).replace(R.id.main_fragment_container, ExerciseFragment()).commit()
             }
-            R.id.nav_gallery -> {
-
+            R.id.nav_settings -> {
+                fragmentManager.beginTransaction().addToBackStack(null).replace(R.id.main_fragment_container, SettingsFragment()).commit()
             }
-            R.id.nav_slideshow -> {
-
+            R.id.nav_statistics -> {
+                fragmentManager.beginTransaction().addToBackStack(null).replace(R.id.main_fragment_container, StatisticFragment()).commit()
             }
-            R.id.nav_manage -> {
-
+            R.id.nav_profile -> {
+                fragmentManager.beginTransaction().addToBackStack(null).replace(R.id.main_fragment_container, ProfileFragment()).commit()
             }
-            R.id.nav_share -> {
-
-            }
-            R.id.nav_send -> {
-
+            R.id.nav_map -> {
+                fragmentManager.beginTransaction().addToBackStack(null).replace(R.id.main_fragment_container, GymsMapFragment()).commit()
             }
         }
 

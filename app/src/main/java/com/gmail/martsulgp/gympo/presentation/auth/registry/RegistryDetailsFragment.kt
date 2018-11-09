@@ -50,13 +50,14 @@ class RegistryDetailsFragment : MvpFragment(), RegistryDetailsView {
 
     override fun showAlertDialog(message: String?) {
         InfoDialog.newInstance(InfoDialog.DialogVO(
-                message = message ?: "Test message",
+                message = message ?: "Fields should not be empty. You can write in your information later in Settings menu",
                 buttons = arrayOf(InfoDialog.getCloseButton(context!!) {
                     Toast.makeText(context, "Close clicked", Toast.LENGTH_SHORT).show()
                 },
                         InfoDialog.DialogButton(InfoDialog.ButtonType.POSITIVE, "OK") {
                             presenter.updateUser(getUser())
-                        })
+                        }),
+                cancelable = false
         )).show(fragmentManager, "TAG")
     }
 

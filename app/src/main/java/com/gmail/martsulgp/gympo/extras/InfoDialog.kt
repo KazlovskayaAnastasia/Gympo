@@ -9,7 +9,7 @@ import androidx.appcompat.app.AlertDialog
 import com.gmail.martsulgp.gympo.R
 import java.io.Serializable
 
-open class InfoDialog : DialogFragment() {
+open class InfoDialog : DialogFragment(), Serializable {
     companion object {
         private const val KEY_DIALOG_VO = "KEY_DIALOG_VO"
         lateinit var dialog : InfoDialog
