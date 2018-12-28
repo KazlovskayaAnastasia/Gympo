@@ -113,6 +113,13 @@ class RegistryFragment : MvpFragment(), GoogleApiClient.OnConnectionFailedListen
         transaction?.commit()
     }
 
+    override fun goToRegistryDetails() {
+        val registryDetailsFragment = RegistryDetailsFragment()
+        val transaction = fragmentManager?.beginTransaction()
+        transaction?.replace(R.id.entryContainer, registryDetailsFragment)
+        transaction?.commit()
+    }
+
     override fun logger(message: String, debugLevel: RegistryPresenter.DebugLevel) {
         when (debugLevel) {
             RegistryPresenter.DebugLevel.DEBUG -> Log.d(AuthActivity.TAG, message)

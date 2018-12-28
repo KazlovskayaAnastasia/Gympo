@@ -24,6 +24,7 @@ class RegistryPresenter(private val userDataRepository: UserDataRepository) : Mv
                             viewState.logger(it.email ?: "", DebugLevel.DEBUG)
                             viewState.logger(it.name ?: "", DebugLevel.DEBUG)
                             viewState.logger(it.surname ?: "", DebugLevel.DEBUG)
+                            viewState.goToRegistryDetails()
                         },
                         { _ ->
                             Log.e("Register data", "Error")

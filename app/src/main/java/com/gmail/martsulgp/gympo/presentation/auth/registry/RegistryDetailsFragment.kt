@@ -96,7 +96,7 @@ class RegistryDetailsFragment : MvpFragment(), RegistryDetailsView {
     private val userDataRepository: UserDataRepository by inject()
 
     @ProvidePresenterTag(presenterClass = RegistryDetailsPresenter::class, type = PresenterType.GLOBAL)
-    fun provideDialogPresenterTag(): String = "Registry"
+    fun provideDialogPresenterTag(): String = "RegistryDetails"
 
     @ProvidePresenter(type = PresenterType.GLOBAL)
     fun provideDialogPresenter() = RegistryDetailsPresenter(userDataRepository)

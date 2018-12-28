@@ -7,4 +7,5 @@ interface RegistryView : MvpView {
 
     fun progressBarVisibility(b: Boolean)
     fun logger(message : String, debugLevel : RegistryPresenter.DebugLevel)
+    fun goToRegistryDetails()
 }
