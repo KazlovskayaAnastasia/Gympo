@@ -20,45 +20,12 @@ import com.gmail.martsulgp.gympo.data.model.entity.UserDataObj
 import com.gmail.martsulgp.gympo.data.model.request.UserDataRequest
 import com.gmail.martsulgp.gympo.data.repository.UserDataRepository
 import com.gmail.martsulgp.gympo.extras.InfoDialog
+import com.gmail.martsulgp.gympo.presentation.auth.login.LoginFragment
 import com.google.android.material.textfield.TextInputEditText
 import com.google.android.material.textfield.TextInputLayout
 import org.koin.android.ext.android.inject
 
 class RegistryDetailsFragment : MvpFragment(), RegistryDetailsView {
-
-    override fun onSaveClick() {
-        var b = false
-        for (i in validationFields) {
-            if (i.text.toString().isEmpty()) {
-                i.error = "This field shouldn't be empty"
-                b = true
-            }
-        }
-        if (b) presenter.showAlert(b) else presenter.updateUser(getUser())
-    }
-
-     private fun getUser()= UserDataRequest(
-             name = signInEditName.text.toString(),
-             surname = signInEditSurname.text.toString(),
-             age = if(signInBirth.text?.toString().isNullOrBlank()) 1 else signInBirth.text.toString().toInt(),
-             height = signInEditHeight.text.toString().toInt(),
-             weight = signInEditWeight.text.toString().toInt(),
-             experience = experience.selectedItemPosition,
-             goal = aim.selectedItemPosition
-     )
-
-    override fun showAlertDialog(message: String?) {
-        InfoDialog.newInstance(InfoDialog.DialogVO(
-                message = message ?: "Fields should not be empty. You can write in your information later in Settings menu",
-                buttons = arrayOf(InfoDialog.getCloseButton(context!!) {
-                    Toast.makeText(context, "Close clicked", Toast.LENGTH_SHORT).show()
-                },
-                        InfoDialog.DialogButton(InfoDialog.ButtonType.POSITIVE, "OK") {
-                            presenter.updateUser(getUser())
-                        }),
-                cancelable = false
-        )).show(fragmentManager, "TAG")
-    }
 
     @BindView(R.id.layout_authEditName)
     lateinit var layout_signInEditName: TextInputLayout
@@ -103,7 +70,48 @@ class RegistryDetailsFragment : MvpFragment(), RegistryDetailsView {
     private var validationFields: ArrayList<TextInputEditText> = arrayListOf()
 
     override fun progressBarVisibility(b: Boolean) {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+//        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+    }
+
+    override fun onRegistrationFinished(email: String) {
+        val loginFragment = LoginFragment.newInstance(email)
+        val transaction = fragmentManager?.beginTransaction()
+        transaction?.replace(R.id.entryContainer, loginFragment)
+        transaction?.commit()
+    }
+
+    override fun onSaveClick() {
+        var b = false
+        for (i in validationFields) {
+            if (i.text.toString().isEmpty()) {
+                i.error = "This field shouldn't be empty"
+                b = true
+            }
+        }
+        if (b) presenter.showAlert(b) else presenter.updateUser(getUser())
+    }
+
+     private fun getUser()= UserDataRequest(
+             name = signInEditName.text.toString(),
+             surname = signInEditSurname.text.toString(),
+             age = if(signInBirth.text?.toString().isNullOrBlank()) 1 else signInBirth.text.toString().toInt(),
+             height = signInEditHeight.text.toString().toInt(),
+             weight = signInEditWeight.text.toString().toInt(),
+             experience = experience.selectedItemPosition,
+             aim = aim.selectedItemPosition
+     )
+
+    override fun showAlertDialog(message: String?) {
+        InfoDialog.newInstance(InfoDialog.DialogVO(
+                message = message ?: "Fields should not be empty. You can write in your information later in Settings menu",
+                buttons = arrayOf(InfoDialog.getCloseButton(activity!!) {
+                    Toast.makeText(activity, "Close clicked", Toast.LENGTH_SHORT).show()
+                },
+                        InfoDialog.DialogButton(InfoDialog.ButtonType.POSITIVE, "OK") {
+                            presenter.updateUser(getUser())
+                        }),
+                cancelable = false
+        )).show(fragmentManager, "TAG")
     }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {

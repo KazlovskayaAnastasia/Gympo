@@ -4,6 +4,7 @@ import android.annotation.SuppressLint
 import android.util.Log
 import com.arellomobile.mvp.InjectViewState
 import com.arellomobile.mvp.MvpPresenter
+import com.gmail.martsulgp.gympo.data.model.entity.UserData
 import com.gmail.martsulgp.gympo.data.model.request.UserDataRequest
 import com.gmail.martsulgp.gympo.data.repository.UserDataRepository
 import io.reactivex.android.schedulers.AndroidSchedulers
@@ -21,7 +22,7 @@ class RegistryDetailsPresenter(val userDataRepository: UserDataRepository) : Mvp
                 .doOnSubscribe { viewState.progressBarVisibility(true) }
                 .doOnTerminate { viewState.progressBarVisibility(false) }
                 .subscribe(
-                        { Log.d("UserDataUpdate", "Completable completed") },
+                        { it : UserData -> viewState.onRegistrationFinished(it.email)},
                         { error -> Log.d("UserDataUpdate", "Completable onError: ${error.message.toString()}") }
                 )
     }

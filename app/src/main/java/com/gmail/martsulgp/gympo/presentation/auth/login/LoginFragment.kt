@@ -33,6 +33,8 @@ import com.google.android.gms.auth.api.signin.GoogleSignInResult
 import com.google.android.gms.common.ConnectionResult
 import com.google.android.gms.common.SignInButton
 import com.google.android.gms.common.api.GoogleApiClient
+import com.google.android.material.textfield.TextInputEditText
+import com.google.android.material.textfield.TextInputLayout
 import org.json.JSONException
 import org.koin.android.ext.android.inject
 import java.util.*
@@ -55,15 +57,15 @@ class LoginFragment : MvpFragment(), GoogleApiClient.OnConnectionFailedListener,
     fun provideDialogPresenter() = LoginPresenter(userDataRepository)
 
     @BindView(R.id.layout_signInEditLogin)
-    lateinit var layout_signInEditLogin: com.google.android.material.textfield.TextInputLayout
+    lateinit var layout_signInEditLogin: TextInputLayout
 
     @BindView(R.id.signInEditLogin)
-    lateinit var signInEditLogin: com.google.android.material.textfield.TextInputEditText
+    lateinit var signInEditLogin: TextInputEditText
     @BindView(R.id.layout_signInEditPassword)
-    lateinit var layout_signInEditPassword: com.google.android.material.textfield.TextInputLayout
+    lateinit var layout_signInEditPassword: TextInputLayout
 
     @BindView(R.id.signInEditPassword)
-    lateinit var signInEditPassword: com.google.android.material.textfield.TextInputEditText
+    lateinit var signInEditPassword: TextInputEditText
     @BindView(R.id.sign_in_button)
     lateinit var googleButton: SignInButton
 
@@ -80,13 +82,13 @@ class LoginFragment : MvpFragment(), GoogleApiClient.OnConnectionFailedListener,
     lateinit var loginProgressBar: ProgressBar
 
     companion object {
-        private const val KEY_KEY = "KEY"
+        private const val USER_LOGIN = "login"
         const val REQEST_SIGN_IN = 9001
         const val TAG = "Google_Sign_In"
         fun newInstance(str: String): LoginFragment {
             val fragment = LoginFragment()
             val bundle = Bundle()
-            bundle.putString(KEY_KEY, str)
+            bundle.putString(USER_LOGIN, str)
             fragment.arguments = bundle
             return fragment
         }
@@ -94,20 +96,22 @@ class LoginFragment : MvpFragment(), GoogleApiClient.OnConnectionFailedListener,
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        FacebookSdk.sdkInitialize(this.context)
-        AppEventsLogger.activateApp(this.context)
+        FacebookSdk.sdkInitialize(this.activity)
+        AppEventsLogger.activateApp(this.activity)
     }
 
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         val view = inflater.inflate(R.layout.fragment_login, container, false)
         ButterKnife.bind(this, view)
+        val bundle = this.arguments
+        signInEditLogin.setText(bundle.getString(USER_LOGIN))
         val gso = GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
                 .requestEmail()
                 .build()
 
 // Todo reveal the issue with ".enableAutoManage" later (no androidX support for FragmentActivity())
-        googleApiClient = GoogleApiClient.Builder(this.context!!)
+        googleApiClient = GoogleApiClient.Builder(this.activity!!)
 //                .enableAutoManage(FragmentActivity(), this)
                 .addApi(Auth.GOOGLE_SIGN_IN_API, gso)
                 .build()
@@ -124,7 +128,7 @@ class LoginFragment : MvpFragment(), GoogleApiClient.OnConnectionFailedListener,
             onLoginBtnClick()
         }
 
-        AppEventsLogger.activateApp(this.context)
+        AppEventsLogger.activateApp(this.activity)
         callbackManager = CallbackManager.Factory.create()
         loginButton.setReadPermissions(Arrays.asList("public_profile", "user_birthday", "user_gender"))
 // Todo reveal the issue with "support.v4" later
@@ -189,6 +193,21 @@ class LoginFragment : MvpFragment(), GoogleApiClient.OnConnectionFailedListener,
 //        }
 //    }
 
+    //Backendless
+    private fun onLoginBtnClick() {
+        val email = signInEditLogin.text.toString()
+        val password = signInEditPassword.text.toString()
+        presenter.onLoginPress(email, password)
+    }
+
+    //Navigation
+    fun goToSignUp() {
+        val registryFragment = RegistryFragment()
+        val transaction = fragmentManager?.beginTransaction()
+        transaction?.replace(R.id.entryContainer, registryFragment)
+        transaction?.commit()
+    }
+
     override fun progressBarVisibility(b: Boolean) {
         loginProgressBar.visibility = if (b) View.VISIBLE else View.GONE
     }
@@ -214,20 +233,6 @@ class LoginFragment : MvpFragment(), GoogleApiClient.OnConnectionFailedListener,
         presenter.updateUserData(fbProfile)
     }
 
-    //Backendless
-    private fun onLoginBtnClick() {
-        val email = signInEditLogin.text.toString()
-        val password = signInEditPassword.text.toString()
-        presenter.onLoginPress(email, password)
-    }
-
-    //Navigation
-    fun goToSignUp() {
-        val registryFragment = RegistryFragment()
-        val transaction = fragmentManager?.beginTransaction()
-        transaction?.replace(R.id.entryContainer, registryFragment)
-        transaction?.commit()
-    }
 
 //    TODO remove transaction to testFragment
     //Results from Google & Facebook
@@ -251,7 +256,7 @@ class LoginFragment : MvpFragment(), GoogleApiClient.OnConnectionFailedListener,
     override fun showAlertDialog(message: String?) {
         InfoDialog.newInstance(InfoDialog.DialogVO(
                 message = message ?: "",
-                buttons = arrayOf(InfoDialog.getCancelButton(context!!){  },
+                buttons = arrayOf(InfoDialog.getCancelButton(context!!){ },
                         InfoDialog.DialogButton(InfoDialog.ButtonType.POSITIVE, "Register") {
                             goToSignUp()
                         })
@@ -259,8 +264,8 @@ class LoginFragment : MvpFragment(), GoogleApiClient.OnConnectionFailedListener,
     }
 
     override fun goToMainMenu() {
-        val intent = Intent(context, MainMenuActivity::class.java)
-        startActivity(intent)
+        startActivity(Intent(activity, MainMenuActivity::class.java))
+        activity.finish()
     }
 }
 

@@ -1,7 +1,5 @@
 package com.gmail.martsulgp.gympo.data.model.request
 
-import com.google.gson.annotations.SerializedName
-
 data class UserDataRequest(
         var name: String,
         var surname: String,
@@ -9,6 +7,5 @@ data class UserDataRequest(
         var height: Int,
         var weight: Int,
         var experience: Int,
-        @SerializedName("aim")
-        var goal: Int
+        var aim: Int
 )

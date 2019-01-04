@@ -7,4 +7,5 @@ interface RegistryDetailsView : MvpView {
     fun progressBarVisibility(b: Boolean)
     fun showAlertDialog(message: String?)
     fun onSaveClick()
+    fun onRegistrationFinished(email: String)
 }

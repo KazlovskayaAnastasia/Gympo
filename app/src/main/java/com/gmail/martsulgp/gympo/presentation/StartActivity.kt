@@ -14,7 +14,7 @@ import com.bumptech.glide.Glide
 import com.gmail.martsulgp.gympo.R
 import com.gmail.martsulgp.gympo.data.repository.UserDataRepository
 import com.gmail.martsulgp.gympo.presentation.auth.AuthActivity
-import com.gmail.martsulgp.gympo.presentation.testSamples.TestActivity
+import com.gmail.martsulgp.gympo.presentation.menu.MainMenuActivity
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.schedulers.Schedulers
 import org.koin.android.ext.android.inject
@@ -55,7 +55,7 @@ class StartActivity : Activity() {
                     .observeOn(AndroidSchedulers.mainThread())
                     .subscribe ({ it ->
                         if (it) {
-                            goNext(TestActivity())
+                            goNext(MainMenuActivity())
                         }else{
                             goNext(AuthActivity())
                         }

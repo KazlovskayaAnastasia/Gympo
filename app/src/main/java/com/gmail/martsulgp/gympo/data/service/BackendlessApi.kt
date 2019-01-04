@@ -5,7 +5,6 @@ import com.gmail.martsulgp.gympo.data.model.request.RegisterRequest
 import com.gmail.martsulgp.gympo.data.model.request.UserDataRequest
 import com.gmail.martsulgp.gympo.data.model.response.UserDataResponse
 import com.google.gson.GsonBuilder
-import io.reactivex.Completable
 import io.reactivex.Observable
 import io.reactivex.Single
 import okhttp3.OkHttpClient
@@ -37,7 +36,7 @@ interface BackendlessApi {
     fun getUserInfo(@Path("userId") id: String): Observable<UserDataResponse>
 
     @PUT("users/{userId}")
-    fun updateUser(@Path("userId") id: String, @Body info: UserDataRequest): Completable
+    fun updateUser(@Path("userId") id: String, @Body info: UserDataRequest): Observable<UserDataResponse>
 
 
 

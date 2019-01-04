@@ -7,7 +7,6 @@ import com.gmail.martsulgp.gympo.data.model.request.LogInRequest
 import com.gmail.martsulgp.gympo.data.model.request.RegisterRequest
 import com.gmail.martsulgp.gympo.data.model.request.UserDataRequest
 import com.gmail.martsulgp.gympo.data.service.BackendlessApi
-import io.reactivex.Completable
 import io.reactivex.Observable
 import io.reactivex.Single
 
@@ -23,8 +22,9 @@ class UserDataRepositoryImpl : UserDataRepository {
         api.checkToken(token)
 
 
-    override fun updateUserData(user: UserDataRequest): Completable =
+    override fun updateUserData(user: UserDataRequest): Observable<UserData> =
         api.updateUser(currentUser.ownerId, user)
+                .map { UserDataMapper.map(userDataResponse = it) }
 
 
     override fun logInUser(email: String, password: String) : Observable<UserData> =

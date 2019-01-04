@@ -11,7 +11,7 @@ class AuthActivity: MvpActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_login)
-        fragmentManager.beginTransaction().addToBackStack(null).replace(R.id.entryContainer, LoginFragment()).commit()
+        fragmentManager.beginTransaction().addToBackStack(null).replace(R.id.entryContainer, LoginFragment.newInstance("")).commit()
     }
 
     companion object {
