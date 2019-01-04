@@ -256,7 +256,7 @@ class LoginFragment : MvpFragment(), GoogleApiClient.OnConnectionFailedListener,
     override fun showAlertDialog(message: String?) {
         InfoDialog.newInstance(InfoDialog.DialogVO(
                 message = message ?: "",
-                buttons = arrayOf(InfoDialog.getCancelButton(context!!){ },
+                buttons = arrayOf(InfoDialog.getCancelButton(activity!!){  },
                         InfoDialog.DialogButton(InfoDialog.ButtonType.POSITIVE, "Register") {
                             goToSignUp()
                         })
@@ -264,8 +264,8 @@ class LoginFragment : MvpFragment(), GoogleApiClient.OnConnectionFailedListener,
     }
 
     override fun goToMainMenu() {
-        startActivity(Intent(activity, MainMenuActivity::class.java))
-        activity.finish()
+        val intent = Intent(activity, MainMenuActivity::class.java)
+        startActivity(intent)
     }
 }
 

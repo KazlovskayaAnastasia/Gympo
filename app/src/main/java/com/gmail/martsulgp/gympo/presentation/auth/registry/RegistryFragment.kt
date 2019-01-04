@@ -64,6 +64,8 @@ class RegistryFragment : MvpFragment(), GoogleApiClient.OnConnectionFailedListen
     @BindView(R.id.registryProgressBar)
     lateinit var registryProgressBar: ProgressBar
 
+    var isInfoRight = true
+
     companion object {
         private const val KEY_KEY = "KEY"
         const val REQEST_SIGN_IN = 9001
@@ -103,7 +105,7 @@ class RegistryFragment : MvpFragment(), GoogleApiClient.OnConnectionFailedListen
         val email = signUpEditEmail.text.toString()
         val password = signUpEditPassword.text.toString()
         validateData()
-        presenter.onRegistryPress(email, password, name, surname)
+        if (isInfoRight) presenter.onRegistryPress(email, password, name, surname)
     }
 
     fun goToSignIn() {
@@ -127,58 +129,44 @@ class RegistryFragment : MvpFragment(), GoogleApiClient.OnConnectionFailedListen
         }
     }
 
-    private fun validateData():Boolean {
+    private fun validateData() : Boolean {
 
         val nameIsEmpty =  getString(R.string.NameIsEmpty)
         val surnameIsEmpty =  getString(R.string.SurnameIsEmpty)
         val emailIsEmpty =  getString(R.string.emailIsEmpty)
         val emailIsNotContainSymbol =  getString(R.string.emailIsNotContainSymbol)
-        val passwordIsEmpty =  getString(R.string.passwordIsEmpty)
         val invalidLengthPassword =  getString(R.string.invalidLengthOfPassword)
+        isInfoRight = true
 
         //validate of name
-        var result = true
-        val name = signInEditName.text.toString()
-        if (name.isEmpty()) {
+        if (signInEditName.text.toString().isEmpty()){
             signInEditName.error = nameIsEmpty
-            result = false
+            isInfoRight = false
         }
-        else
-            layout_signInEditName.isErrorEnabled = false
 
         //validate of surname
-        val surname = signUpEditSurname.text.toString()
-        if (surname.isEmpty()) {
+        if (signUpEditSurname.text.toString().isEmpty()){
             signUpEditSurname.error = surnameIsEmpty
-            result = false
+            isInfoRight = false
         }
-        else
-            layout_signUpEditSurname.isErrorEnabled = false
 
         //validate of email
-        val email = signUpEditEmail.text.toString()
-        if (email.isEmpty()) {
+        if (signUpEditEmail.text.toString().isEmpty()) {
             signUpEditEmail.error = emailIsEmpty
-            result = false
+            isInfoRight = false
         }
-        else if (!email.contains("@", true)) {
+        else if (!signUpEditEmail.text.toString().contains("@", true)) {
             signUpEditEmail.error =  emailIsNotContainSymbol
-            result = false
+            isInfoRight = false
         }
 
         //validate of password
-        val password =  signUpEditPassword.text.toString()
-        if( password.isEmpty()){
-            signUpEditPassword.error =  passwordIsEmpty
-            layout_signUpEditPassword.isErrorEnabled = true
-            result = false
+        if(signUpEditPassword.text.toString().isEmpty()
+                || signUpEditPassword.text.toString().length < 8){
+            signUpEditPassword.error =  invalidLengthPassword
+            isInfoRight = false
         }
-        else if(password.length in 11 downTo 2){
-            signUpEditPassword.error = invalidLengthPassword
-            layout_signUpEditPassword.isErrorEnabled = true
-            result = false
-        }
-        return result
+        return isInfoRight
     }
 }
 
