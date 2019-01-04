@@ -6,7 +6,6 @@ import com.gmail.martsulgp.gympo.data.model.entity.UserDataObj
 import com.gmail.martsulgp.gympo.data.model.request.LogInRequest
 import com.gmail.martsulgp.gympo.data.model.request.RegisterRequest
 import com.gmail.martsulgp.gympo.data.model.request.UserDataRequest
-import com.gmail.martsulgp.gympo.data.model.response.UserDataResponse
 import com.gmail.martsulgp.gympo.data.service.BackendlessApi
 import io.reactivex.Completable
 import io.reactivex.Observable
@@ -17,8 +16,8 @@ class UserDataRepositoryImpl : UserDataRepository {
     private val api by lazy { BackendlessApi.create() }
     private val currentUser = UserDataObj
 
-    override fun loginWithFB(token: String): Single<UserDataResponse> =
-            api.loginUserWithFB(token)
+    override fun loginWithFB(token: String): Single<UserData> =
+            api.loginUserWithFB(token).map { UserDataMapper.map(userDataResponse = it) }
 
     override fun checkToken(token: String): Single<Boolean> =
         api.checkToken(token)

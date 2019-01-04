@@ -107,7 +107,7 @@ class RegistryFragment : MvpFragment(), GoogleApiClient.OnConnectionFailedListen
     }
 
     fun goToSignIn() {
-        val loginFragment = LoginFragment()
+        val loginFragment = LoginFragment.newInstance("")
         val transaction = fragmentManager?.beginTransaction()
         transaction?.replace(R.id.entryContainer, loginFragment)
         transaction?.commit()

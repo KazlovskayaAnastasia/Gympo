@@ -65,7 +65,7 @@ class LoginFragment : MvpFragment(), GoogleApiClient.OnConnectionFailedListener,
     @BindView(R.id.signInEditPassword)
     lateinit var signInEditPassword: com.google.android.material.textfield.TextInputEditText
     @BindView(R.id.sign_in_button)
-    lateinit var sign_in_button: SignInButton
+    lateinit var googleButton: SignInButton
 
     @BindView(R.id.facebook_login_Button)
     lateinit var loginButton: LoginButton
@@ -105,14 +105,15 @@ class LoginFragment : MvpFragment(), GoogleApiClient.OnConnectionFailedListener,
         val gso = GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
                 .requestEmail()
                 .build()
-// Todo reveal the issue with ".enableAutoManage" later
+
+// Todo reveal the issue with ".enableAutoManage" later (no androidX support for FragmentActivity())
         googleApiClient = GoogleApiClient.Builder(this.context!!)
 //                .enableAutoManage(FragmentActivity(), this)
                 .addApi(Auth.GOOGLE_SIGN_IN_API, gso)
                 .build()
 
-        sign_in_button.setOnClickListener {
-            signIn()
+        googleButton.setOnClickListener {
+            googleSignIn()
         }
 
         goToSignUp.setOnClickListener {
@@ -120,13 +121,13 @@ class LoginFragment : MvpFragment(), GoogleApiClient.OnConnectionFailedListener,
         }
 
         signInButton.setOnClickListener {
-            onClickLoginButton()
+            onLoginBtnClick()
         }
 
-// Todo reveal the issue with "support.v4" later
         AppEventsLogger.activateApp(this.context)
         callbackManager = CallbackManager.Factory.create()
         loginButton.setReadPermissions(Arrays.asList("public_profile", "user_birthday", "user_gender"))
+// Todo reveal the issue with "support.v4" later
 //        loginButton.fragment = this
         loginButton.registerCallback(callbackManager,
                 object : FacebookCallback<LoginResult> {
@@ -197,7 +198,7 @@ class LoginFragment : MvpFragment(), GoogleApiClient.OnConnectionFailedListener,
     }
 
     // Google
-    override fun signIn() {
+    override fun googleSignIn() {
         val signInIntent = Auth.GoogleSignInApi.getSignInIntent(googleApiClient)
         startActivityForResult(signInIntent, REQEST_SIGN_IN)
     }
@@ -214,7 +215,7 @@ class LoginFragment : MvpFragment(), GoogleApiClient.OnConnectionFailedListener,
     }
 
     //Backendless
-    private fun onClickLoginButton() {
+    private fun onLoginBtnClick() {
         val email = signInEditLogin.text.toString()
         val password = signInEditPassword.text.toString()
         presenter.onLoginPress(email, password)
@@ -228,6 +229,7 @@ class LoginFragment : MvpFragment(), GoogleApiClient.OnConnectionFailedListener,
         transaction?.commit()
     }
 
+//    TODO remove transaction to testFragment
     //Results from Google & Facebook
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent) {
         super.onActivityResult(requestCode, resultCode, data)

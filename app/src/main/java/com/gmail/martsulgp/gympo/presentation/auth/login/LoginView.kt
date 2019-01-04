@@ -5,7 +5,7 @@ import com.google.android.gms.auth.api.signin.GoogleSignInResult
 import com.google.android.gms.common.ConnectionResult
 
 interface LoginView : MvpView {
-    fun signIn()
+    fun googleSignIn()
     fun progressBarVisibility(b: Boolean)
     fun onConnectionFailed(connectionResult: ConnectionResult)
     fun handleSignInResult(result: GoogleSignInResult)
