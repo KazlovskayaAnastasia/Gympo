@@ -16,6 +16,7 @@ import com.arellomobile.mvp.presenter.PresenterType
 import com.arellomobile.mvp.presenter.ProvidePresenter
 import com.arellomobile.mvp.presenter.ProvidePresenterTag
 import com.gmail.martsulgp.gympo.R
+import com.gmail.martsulgp.gympo.data.model.entity.UserDataObj
 import com.gmail.martsulgp.gympo.data.model.request.UserDataRequest
 import com.gmail.martsulgp.gympo.data.repository.UserDataRepository
 import com.gmail.martsulgp.gympo.extras.InfoDialog
@@ -33,15 +34,13 @@ class RegistryDetailsFragment : MvpFragment(), RegistryDetailsView {
                 b = true
             }
         }
-            presenter.showAlert(b)
-        presenter.updateUser(getUser())
+        if (b) presenter.showAlert(b) else presenter.updateUser(getUser())
     }
 
      private fun getUser()= UserDataRequest(
              name = signInEditName.text.toString(),
              surname = signInEditSurname.text.toString(),
-//  TODO on server: age, here: birthday. Fix this issue on backend
-             age = signInBirth.text.toString().toInt(),
+             age = if(signInBirth.text?.toString().isNullOrBlank()) 1 else signInBirth.text.toString().toInt(),
              height = signInEditHeight.text.toString().toInt(),
              weight = signInEditWeight.text.toString().toInt(),
              experience = experience.selectedItemPosition,
@@ -132,13 +131,15 @@ class RegistryDetailsFragment : MvpFragment(), RegistryDetailsView {
             }
         }
 
+        signInEditName.setText(UserDataObj.name)
+        signInEditSurname.setText(UserDataObj.surname)
         validationFields = object : ArrayList<TextInputEditText>() {
             init {
                 add(signInEditName)
                 add(signInEditSurname)
+                add(signInBirth)
                 add(signInEditHeight)
                 add(signInEditWeight)
-                add(signInBirth)
             }
         }
 

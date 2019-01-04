@@ -4,7 +4,8 @@ import android.annotation.SuppressLint
 import android.util.Log
 import com.arellomobile.mvp.InjectViewState
 import com.arellomobile.mvp.MvpPresenter
-import com.gmail.martsulgp.gympo.data.model.response.UserDataResponse
+import com.gmail.martsulgp.gympo.data.model.entity.UserData
+import com.gmail.martsulgp.gympo.data.model.entity.UserDataObj
 import com.gmail.martsulgp.gympo.data.repository.UserDataRepository
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.schedulers.Schedulers
@@ -20,10 +21,11 @@ class RegistryPresenter(private val userDataRepository: UserDataRepository) : Mv
                 .doOnSubscribe { viewState.progressBarVisibility(true) }
                 .doOnTerminate { viewState.progressBarVisibility(false) }
                 .subscribe(
-                        { it: UserDataResponse ->
-                            viewState.logger(it.email ?: "", DebugLevel.DEBUG)
-                            viewState.logger(it.name ?: "", DebugLevel.DEBUG)
-                            viewState.logger(it.surname ?: "", DebugLevel.DEBUG)
+                        { it: UserData ->
+                            viewState.logger(it.email , DebugLevel.DEBUG)
+                            viewState.logger(it.name , DebugLevel.DEBUG)
+                            viewState.logger(it.surname , DebugLevel.DEBUG)
+                            UserDataObj.setData(it)
                             viewState.goToRegistryDetails()
                         },
                         { _ ->

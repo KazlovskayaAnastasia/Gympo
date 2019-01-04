@@ -9,7 +9,7 @@ import io.reactivex.Single
 
 interface UserDataRepository {
     fun logInUser(email: String, password: String): Observable<UserData>
-    fun registerUser(email: String, password: String, name: String, surname: String): Observable<UserDataResponse>
+    fun registerUser(email: String, password: String, name: String, surname: String): Observable<UserData>
     fun updateUserData(user: UserDataRequest): Completable
     fun loginWithFB(token: String): Single<UserDataResponse>
     fun checkToken(token: String): Single<Boolean>

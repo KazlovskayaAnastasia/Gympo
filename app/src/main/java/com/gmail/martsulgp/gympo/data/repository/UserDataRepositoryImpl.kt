@@ -35,11 +35,11 @@ class UserDataRepositoryImpl : UserDataRepository {
         )).map { UserDataMapper.map(userDataResponse = it) }
 
 
-    override fun registerUser(email: String, password: String, name: String, surname: String) : Observable<UserDataResponse> =
+    override fun registerUser(email: String, password: String, name: String, surname: String) : Observable<UserData> =
             api.regUser(RegisterRequest(
                     email = email,
                     password = password,
                     name = name,
                     surname = surname
-            ))
+            )).map { UserDataMapper.map(userDataResponse = it) }
 }

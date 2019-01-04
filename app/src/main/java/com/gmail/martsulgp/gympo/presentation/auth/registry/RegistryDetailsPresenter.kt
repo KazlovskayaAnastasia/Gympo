@@ -22,7 +22,7 @@ class RegistryDetailsPresenter(val userDataRepository: UserDataRepository) : Mvp
                 .doOnTerminate { viewState.progressBarVisibility(false) }
                 .subscribe(
                         { Log.d("UserDataUpdate", "Completable completed") },
-                        { error -> Log.d("UserDataUpdate", "Completable onError: ${error.message}") }
+                        { error -> Log.d("UserDataUpdate", "Completable onError: ${error.message.toString()}") }
                 )
     }
 
