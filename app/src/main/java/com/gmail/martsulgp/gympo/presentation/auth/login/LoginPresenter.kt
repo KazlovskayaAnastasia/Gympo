@@ -8,6 +8,7 @@ import com.facebook.Profile
 import com.gmail.martsulgp.gympo.data.model.entity.UserData
 import com.gmail.martsulgp.gympo.data.model.entity.UserDataObj
 import com.gmail.martsulgp.gympo.data.repository.UserDataRepository
+import com.gmail.martsulgp.gympo.presentation.StartActivity.Companion.USER_ID
 import com.gmail.martsulgp.gympo.presentation.StartActivity.Companion.USER_TOKEN
 import com.gmail.martsulgp.gympo.presentation.StartActivity.Companion.pref
 import io.reactivex.android.schedulers.AndroidSchedulers
@@ -16,7 +17,6 @@ import io.reactivex.schedulers.Schedulers
 @InjectViewState
 @SuppressLint("CheckResult")
 class LoginPresenter(private val userDataRepository: UserDataRepository) : MvpPresenter<LoginView>() {
-
 
     fun onLoginPress(email: String, password: String) {
         userDataRepository.logInUser(email, password)
@@ -28,6 +28,7 @@ class LoginPresenter(private val userDataRepository: UserDataRepository) : MvpPr
                         { it: UserData ->
                             pref.edit()
                                     .putString(USER_TOKEN, it.token)
+                                    .putString(USER_ID, it.objectId)
                                     .apply()
                             UserDataObj.setData(it)
                             viewState.goToMainMenu()
@@ -49,7 +50,7 @@ class LoginPresenter(private val userDataRepository: UserDataRepository) : MvpPr
                 .subscribe(
                         { user ->
                             viewState.updateFbUser()
-                            viewState.logger(user.email ?: "", DebugLevel.DEBUG)
+                            viewState.logger(user.email, DebugLevel.DEBUG)
                         },
                         { error ->
                             viewState.logger(error.message ?: "", LoginPresenter.DebugLevel.ERROR)

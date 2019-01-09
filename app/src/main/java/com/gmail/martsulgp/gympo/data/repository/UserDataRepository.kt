@@ -11,4 +11,6 @@ interface UserDataRepository {
     fun updateUserData(user: UserDataRequest): Observable<UserData>
     fun loginWithFB(token: String): Single<UserData>
     fun checkToken(token: String): Single<Boolean>
+    fun getUserInfo(id: String): Observable<UserData>
+    fun logOut(token: String): Observable<UserData>
 }

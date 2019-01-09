@@ -41,4 +41,10 @@ class UserDataRepositoryImpl : UserDataRepository {
                     name = name,
                     surname = surname
             )).map { UserDataMapper.map(userDataResponse = it) }
+
+    override fun getUserInfo(id: String): Observable<UserData> =
+        api.getUserInfo(id).map{UserDataMapper.map(userDataResponse = it)}
+
+    override fun logOut(token: String): Observable<UserData> =
+        api.logOut(token).map{UserDataMapper.map(userDataResponse = it)}
 }

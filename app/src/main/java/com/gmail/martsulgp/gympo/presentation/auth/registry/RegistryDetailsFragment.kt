@@ -141,6 +141,7 @@ class RegistryDetailsFragment : MvpFragment(), RegistryDetailsView {
 
         signInEditName.setText(UserDataObj.name)
         signInEditSurname.setText(UserDataObj.surname)
+
         validationFields = object : ArrayList<TextInputEditText>() {
             init {
                 add(signInEditName)

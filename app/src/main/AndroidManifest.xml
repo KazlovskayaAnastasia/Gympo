@@ -48,7 +48,7 @@
 
         <activity
             android:name=".presentation.menu.MainMenuActivity"
-            android:label="@string/title_activity_main_menu"
+            android:label="@string/app_name"
             android:theme="@style/AppTheme"/>
     </application>
 

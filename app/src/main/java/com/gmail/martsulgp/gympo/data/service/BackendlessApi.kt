@@ -27,9 +27,8 @@ interface BackendlessApi {
     @GET("users/isvalidusertoken/{token}")
     fun checkToken(@Path("token") param: String): Single<Boolean>
 
-    //    @GET("users/logout")
-//    abstract fun logOut(@Header("user-token") token: String): Observable<Response<Void>>
-
+    @GET("users/logout")
+    fun logOut(@Header("user-token") token: String): Observable<UserDataResponse>
 
     // User block
     @GET("users/{userId}?props")
@@ -37,10 +36,6 @@ interface BackendlessApi {
 
     @PUT("users/{userId}")
     fun updateUser(@Path("userId") id: String, @Body info: UserDataRequest): Observable<UserDataResponse>
-
-
-
-
 
     @POST("users/social/facebook/sdk/login")
     fun loginUserWithFB(@Body accessToken: String): Single<UserDataResponse>

@@ -1,4 +1,4 @@
-package com.gmail.martsulgp.gympo.presentation.menu.ProfileMenu
+package com.gmail.martsulgp.gympo.presentation.menu.profileMenu
 
 import com.arellomobile.mvp.MvpView
 

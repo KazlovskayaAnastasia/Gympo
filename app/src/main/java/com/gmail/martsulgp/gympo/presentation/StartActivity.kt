@@ -7,11 +7,13 @@ import android.content.Intent
 import android.content.SharedPreferences
 import android.os.Bundle
 import android.os.Handler
+import android.util.Log
 import android.widget.ImageView
 import butterknife.BindView
 import butterknife.ButterKnife
 import com.bumptech.glide.Glide
 import com.gmail.martsulgp.gympo.R
+import com.gmail.martsulgp.gympo.data.model.entity.UserDataObj
 import com.gmail.martsulgp.gympo.data.repository.UserDataRepository
 import com.gmail.martsulgp.gympo.presentation.auth.AuthActivity
 import com.gmail.martsulgp.gympo.presentation.menu.MainMenuActivity
@@ -48,28 +50,43 @@ class StartActivity : Activity() {
                 .into(iv_gif)
 
         try {
-
+            var result = false
             Handler().postDelayed({
-            userDataRepository.checkToken(pref.getString(USER_TOKEN, ""))
-                    .subscribeOn(Schedulers.io())
-                    .observeOn(AndroidSchedulers.mainThread())
-                    .subscribe ({ it ->
-                        if (it) {
-                            goNext(MainMenuActivity())
-                        }else{
-                            goNext(AuthActivity())
+                userDataRepository.checkToken(pref.getString(USER_TOKEN, ""))
+                        .subscribeOn(Schedulers.io())
+                        .observeOn(AndroidSchedulers.mainThread())
+                        .subscribe{
+                                 it ->
+                                    if (it) {
+                                        getUserInfo()
+                                    } else {
+                                        goNext(AuthActivity())
+                                    }
                         }
-                    },
-            {_ -> goNext(AuthActivity())})}, 1500L)
+            }, 1000L)
 
         } catch (e: Exception) {
-
+            Log.e("StartActivity msg: ", e.toString())
         }
     }
 
-    fun goNext(activity: Activity){
+    fun goNext(activity: Activity) {
         val intent = Intent(this@StartActivity, activity::class.java)
         startActivity(intent)
         this.finish()
+    }
+
+    @SuppressLint("CheckResult")
+    fun getUserInfo(){
+        userDataRepository.getUserInfo(pref.getString(USER_ID, ""))
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(
+                        { it ->
+                            UserDataObj.setData(it)
+                            goNext(MainMenuActivity())
+                        },
+                        { _ -> goNext(AuthActivity()) }
+                )
     }
 }

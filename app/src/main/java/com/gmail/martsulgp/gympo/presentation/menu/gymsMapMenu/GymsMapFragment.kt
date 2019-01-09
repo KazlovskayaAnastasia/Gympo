@@ -1,4 +1,4 @@
-package com.gmail.martsulgp.gympo.presentation.menu.GymsMapMenu
+package com.gmail.martsulgp.gympo.presentation.menu.gymsMapMenu
 
 import android.os.Bundle
 import android.view.LayoutInflater

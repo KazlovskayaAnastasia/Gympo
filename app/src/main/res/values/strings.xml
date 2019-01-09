@@ -51,7 +51,7 @@
     <string name="NameIsEmpty">Name can\'t be empty!</string>
     <string name="SurnameIsEmpty">Surname can\'t be empty!</string>
     <string name="emailIsEmpty">Email can\'t be empty!</string>
-    <string name="emailIsNotContainSymbol">Email is not contain symbol - @</string>
+    <string name="emailIsNotContainSymbol">Email is not contain symbol @</string>
     <string name="passwordIsEmpty">Password can\'t be empty!</string>
     <string name="invalidLengthOfPassword">Invalid length of password!</string>
 
