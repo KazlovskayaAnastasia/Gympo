@@ -50,6 +50,7 @@ class LoginFragment : MvpFragment(), GoogleApiClient.OnConnectionFailedListener,
     private val userDataRepository: UserDataRepository by inject()
     private var callbackManager: CallbackManager? = null
     private val accessTokenTracker: AccessTokenTracker? = null
+
     @ProvidePresenterTag(presenterClass = LoginPresenter::class, type = PresenterType.GLOBAL)
     fun provideDialogPresenterTag(): String = "Login"
 

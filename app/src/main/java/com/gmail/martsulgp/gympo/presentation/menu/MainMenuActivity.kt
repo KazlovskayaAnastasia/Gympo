@@ -8,11 +8,11 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.GravityCompat
 import com.gmail.martsulgp.gympo.R
 import com.gmail.martsulgp.gympo.data.model.entity.UserDataObj
-import com.gmail.martsulgp.gympo.presentation.menu.StatisticMenu.StatisticFragment
-import com.gmail.martsulgp.gympo.presentation.menu.exerciseMenu.ExerciseFragment
 import com.gmail.martsulgp.gympo.presentation.menu.gymsMapMenu.GymsMapFragment
 import com.gmail.martsulgp.gympo.presentation.menu.profileMenu.ProfileFragment
 import com.gmail.martsulgp.gympo.presentation.menu.settingsMenu.SettingsFragment
+import com.gmail.martsulgp.gympo.presentation.menu.statisticMenu.StatisticFragment
+import com.gmail.martsulgp.gympo.presentation.menu.trainingsMenu.TrainingsFragment
 import com.google.android.material.navigation.NavigationView
 import kotlinx.android.synthetic.main.activity_main_menu.*
 import kotlinx.android.synthetic.main.app_bar_main_menu.*
@@ -52,7 +52,7 @@ class MainMenuActivity : AppCompatActivity(), NavigationView.OnNavigationItemSel
         when (item.itemId) {
             R.id.nav_exercise -> {
                 toolbar.title = "Exercises"
-                fragmentManager.beginTransaction().addToBackStack(null).replace(R.id.main_fragment_container, ExerciseFragment()).commit()
+                fragmentManager.beginTransaction().addToBackStack(null).replace(R.id.main_fragment_container, TrainingsFragment.newInstance()).commit()
             }
             R.id.nav_settings -> {
                 toolbar.title = "Settings"

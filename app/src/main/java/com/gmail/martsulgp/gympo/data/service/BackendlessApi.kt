@@ -3,6 +3,7 @@ package com.gmail.martsulgp.gympo.data.service
 import com.gmail.martsulgp.gympo.data.model.request.LogInRequest
 import com.gmail.martsulgp.gympo.data.model.request.RegisterRequest
 import com.gmail.martsulgp.gympo.data.model.request.UserDataRequest
+import com.gmail.martsulgp.gympo.data.model.response.TrainingResponse
 import com.gmail.martsulgp.gympo.data.model.response.UserDataResponse
 import com.google.gson.GsonBuilder
 import io.reactivex.Observable
@@ -40,8 +41,10 @@ interface BackendlessApi {
     @POST("users/social/facebook/sdk/login")
     fun loginUserWithFB(@Body accessToken: String): Single<UserDataResponse>
 
-//    @GET
-//    fun getTrainings(@Url url: String): Observable<List<TrainingsFeed>>
+    // Exercises block
+
+    @GET
+    fun getTrainings(@Url url: String): Observable<List<TrainingResponse>>
 //
 //    @GET
 //    fun getExercises(@Url string: String): Observable<TrainingsFeed>
