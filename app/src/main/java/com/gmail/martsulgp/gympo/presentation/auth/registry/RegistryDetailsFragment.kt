@@ -103,7 +103,7 @@ class RegistryDetailsFragment : MvpFragment(), RegistryDetailsView {
 
     override fun showAlertDialog(message: String?) {
         InfoDialog.newInstance(InfoDialog.DialogVO(
-                message = message ?: "Fields should not be empty. You can fill in your information later in Settings menu",
+                message = message ?: "Fields should not be empty. You can fill in your information later in Profile menu",
                 buttons = arrayOf(InfoDialog.DialogButton(InfoDialog.ButtonType.NEGATIVE, "FILL IN NOW") {
                     Toast.makeText(activity, "Close clicked", Toast.LENGTH_SHORT).show()
                 },

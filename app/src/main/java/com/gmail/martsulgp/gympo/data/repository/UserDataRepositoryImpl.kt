@@ -33,7 +33,6 @@ class UserDataRepositoryImpl : UserDataRepository {
                 password = password
         )).map { UserDataMapper.map(userDataResponse = it) }
 
-
     override fun registerUser(email: String, password: String, name: String, surname: String) : Observable<UserData> =
             api.regUser(RegisterRequest(
                     email = email,
@@ -45,6 +44,6 @@ class UserDataRepositoryImpl : UserDataRepository {
     override fun getUserInfo(id: String): Observable<UserData> =
         api.getUserInfo(id).map{UserDataMapper.map(userDataResponse = it)}
 
-    override fun logOut(token: String): Observable<UserData> =
-        api.logOut(token).map{UserDataMapper.map(userDataResponse = it)}
+    override fun logOut(token: String): Observable<Void> =
+        api.logOut(token)
 }

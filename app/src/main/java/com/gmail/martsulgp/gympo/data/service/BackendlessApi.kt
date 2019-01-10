@@ -29,7 +29,7 @@ interface BackendlessApi {
     fun checkToken(@Path("token") param: String): Single<Boolean>
 
     @GET("users/logout")
-    fun logOut(@Header("user-token") token: String): Observable<UserDataResponse>
+    fun logOut(@Header("user-token") token: String): Observable<Void>
 
     // User block
     @GET("users/{userId}?props")

@@ -12,5 +12,5 @@ interface UserDataRepository {
     fun loginWithFB(token: String): Single<UserData>
     fun checkToken(token: String): Single<Boolean>
     fun getUserInfo(id: String): Observable<UserData>
-    fun logOut(token: String): Observable<UserData>
+    fun logOut(token: String): Observable<Void>
 }
