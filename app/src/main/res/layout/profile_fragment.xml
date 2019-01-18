@@ -2,7 +2,8 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    android:background="@color/softBlue">
 
     <ScrollView
         android:layout_width="match_parent"
@@ -17,29 +18,38 @@
                 android:id="@+id/profile_user_pic"
                 android:layout_width="100dp"
                 android:layout_height="100dp"
+                android:background="@color/normalGray"
                 android:layout_gravity="center"
-                android:layout_marginTop="15dp"/>
+                android:layout_marginTop="25dp"/>
 
             <RelativeLayout
                 android:id="@+id/layout_user_name"
                 android:layout_width="match_parent"
                 android:layout_height="70dp"
-                android:layout_margin="15dp">
+                android:layout_marginTop="25dp"
+                android:background="@color/white">
 
-                <TextView
-                    android:id="@+id/profile_user_hint_name"
+                <LinearLayout
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:hint="Name"
-                    android:textSize="15dp" />
-
-                <TextView
-                    android:id="@+id/profile_user_name"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
                     android:layout_centerVertical="true"
-                    android:text="User name"
-                    android:textSize="20dp" />
+                    android:layout_marginStart="15dp">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:hint="Name"
+                        android:textSize="15dp"/>
+
+                    <TextView
+                        android:id="@+id/profile_user_name"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="User name"
+                        android:textSize="20dp"/>
+
+                </LinearLayout>
 
                 <ImageView
                     android:id="@+id/right_arrow_name"
@@ -47,11 +57,13 @@
                     android:layout_height="wrap_content"
                     android:layout_alignParentEnd="true"
                     android:layout_centerVertical="true"
-                    android:background="@drawable/ic_arrow_right" />
+                    android:background="@drawable/ic_arrow_right"
+                    android:layout_marginEnd="15dp"/>
 
                 <View
                     android:layout_width="match_parent"
-                    android:layout_height="2dp"
+                    android:layout_height="1dp"
+                    android:background="@color/normalGray"
                     android:layout_alignParentBottom="true" />
 
             </RelativeLayout>
@@ -60,23 +72,29 @@
                 android:id="@+id/layout_user_surname"
                 android:layout_width="match_parent"
                 android:layout_height="70dp"
-                android:layout_marginStart="15dp"
-                android:layout_marginEnd="15dp">
+                android:background="@color/white">
 
-                <TextView
-                    android:id="@+id/profile_user_hint_surname"
+                <LinearLayout
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:hint="Surname"
-                    android:textSize="15dp" />
-
-                <TextView
-                    android:id="@+id/profile_user_surname"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
                     android:layout_centerVertical="true"
-                    android:text="User surname"
-                    android:textSize="20dp" />
+                    android:layout_marginStart="15dp">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:hint="Surname"
+                        android:textSize="15dp" />
+
+                    <TextView
+                        android:id="@+id/profile_user_surname"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="User surname"
+                        android:textSize="20dp" />
+
+                </LinearLayout>
 
                 <ImageView
                     android:id="@+id/right_arrow_surname"
@@ -84,11 +102,13 @@
                     android:layout_height="wrap_content"
                     android:layout_alignParentEnd="true"
                     android:layout_centerVertical="true"
-                    android:background="@drawable/ic_arrow_right" />
+                    android:background="@drawable/ic_arrow_right"
+                    android:layout_marginEnd="15dp"/>
 
                 <View
                     android:layout_width="match_parent"
-                    android:layout_height="2dp"
+                    android:layout_height="1dp"
+                    android:background="@color/normalGray"
                     android:layout_alignParentBottom="true" />
 
             </RelativeLayout>
@@ -97,12 +117,16 @@
                 android:id="@+id/layout_user_age"
                 android:layout_width="match_parent"
                 android:layout_height="70dp"
-                android:layout_marginStart="15dp"
-                android:layout_marginTop="15dp"
-                android:layout_marginEnd="15dp">
+                android:background="@color/white">
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:layout_centerVertical="true"
+                    android:layout_marginStart="15dp">
 
                 <TextView
-                    android:id="@+id/profile_user_hint_age"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:hint="Age"
@@ -112,9 +136,10 @@
                     android:id="@+id/profile_user_age"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_centerVertical="true"
                     android:text="User age"
                     android:textSize="20dp" />
+
+                </LinearLayout>
 
                 <ImageView
                     android:id="@+id/right_arrow_age"
@@ -122,11 +147,13 @@
                     android:layout_height="wrap_content"
                     android:layout_alignParentEnd="true"
                     android:layout_centerVertical="true"
-                    android:background="@drawable/ic_arrow_right" />
+                    android:background="@drawable/ic_arrow_right"
+                    android:layout_marginEnd="15dp"/>
 
                 <View
                     android:layout_width="match_parent"
-                    android:layout_height="2dp"
+                    android:layout_height="1dp"
+                    android:background="@color/normalGray"
                     android:layout_alignParentBottom="true" />
 
             </RelativeLayout>
@@ -135,12 +162,16 @@
                 android:id="@+id/layout_user_height"
                 android:layout_width="match_parent"
                 android:layout_height="70dp"
-                android:layout_marginStart="15dp"
-                android:layout_marginTop="15dp"
-                android:layout_marginEnd="15dp">
+                android:background="@color/white">
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:layout_centerVertical="true"
+                    android:layout_marginStart="15dp">
 
                 <TextView
-                    android:id="@+id/profile_user_hint_height"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:hint="Height"
@@ -150,9 +181,10 @@
                     android:id="@+id/profile_user_height"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_centerVertical="true"
                     android:text="User height"
                     android:textSize="20dp" />
+
+                </LinearLayout>
 
                 <ImageView
                     android:id="@+id/right_arrow_height"
@@ -160,11 +192,13 @@
                     android:layout_height="wrap_content"
                     android:layout_alignParentEnd="true"
                     android:layout_centerVertical="true"
-                    android:background="@drawable/ic_arrow_right" />
+                    android:background="@drawable/ic_arrow_right"
+                    android:layout_marginEnd="15dp"/>
 
                 <View
                     android:layout_width="match_parent"
-                    android:layout_height="2dp"
+                    android:layout_height="1dp"
+                    android:background="@color/normalGray"
                     android:layout_alignParentBottom="true" />
 
             </RelativeLayout>
@@ -173,12 +207,16 @@
                 android:id="@+id/layout_user_weight"
                 android:layout_width="match_parent"
                 android:layout_height="70dp"
-                android:layout_marginStart="15dp"
-                android:layout_marginTop="15dp"
-                android:layout_marginEnd="15dp">
+                android:background="@color/white">
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:layout_centerVertical="true"
+                    android:layout_marginStart="15dp">
 
                 <TextView
-                    android:id="@+id/profile_user_hint_weight"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:hint="Weight"
@@ -188,9 +226,10 @@
                     android:id="@+id/profile_user_weight"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_centerVertical="true"
                     android:text="User weight"
                     android:textSize="20dp" />
+
+                </LinearLayout>
 
                 <ImageView
                     android:id="@+id/right_arrow_weight"
@@ -198,11 +237,13 @@
                     android:layout_height="wrap_content"
                     android:layout_alignParentEnd="true"
                     android:layout_centerVertical="true"
-                    android:background="@drawable/ic_arrow_right" />
+                    android:background="@drawable/ic_arrow_right"
+                    android:layout_marginEnd="15dp"/>
 
                 <View
                     android:layout_width="match_parent"
-                    android:layout_height="2dp"
+                    android:layout_height="1dp"
+                    android:background="@color/normalGray"
                     android:layout_alignParentBottom="true" />
 
             </RelativeLayout>
@@ -211,12 +252,16 @@
                 android:id="@+id/layout_user_experience"
                 android:layout_width="match_parent"
                 android:layout_height="70dp"
-                android:layout_marginStart="15dp"
-                android:layout_marginTop="15dp"
-                android:layout_marginEnd="15dp">
+                android:background="@color/white">
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:layout_centerVertical="true"
+                    android:layout_marginStart="15dp">
 
                 <TextView
-                    android:id="@+id/profile_user_hint_experience"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:hint="Experience"
@@ -230,17 +275,21 @@
                     android:text="User experience"
                     android:textSize="20dp" />
 
+                </LinearLayout>
+
                 <ImageView
                     android:id="@+id/right_arrow_experience"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_alignParentEnd="true"
                     android:layout_centerVertical="true"
-                    android:background="@drawable/ic_arrow_right" />
+                    android:background="@drawable/ic_arrow_right"
+                    android:layout_marginEnd="15dp"/>
 
                 <View
                     android:layout_width="match_parent"
-                    android:layout_height="2dp"
+                    android:layout_height="1dp"
+                    android:background="@color/normalGray"
                     android:layout_alignParentBottom="true" />
 
             </RelativeLayout>
@@ -249,12 +298,16 @@
                 android:id="@+id/layout_user_aim"
                 android:layout_width="match_parent"
                 android:layout_height="70dp"
-                android:layout_marginStart="15dp"
-                android:layout_marginTop="15dp"
-                android:layout_marginEnd="15dp">
+                android:background="@color/white">
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:layout_centerVertical="true"
+                    android:layout_marginStart="15dp">
 
                 <TextView
-                    android:id="@+id/profile_user_hint_aim"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:hint="Aim"
@@ -268,17 +321,21 @@
                     android:text="User aim"
                     android:textSize="20dp" />
 
+                </LinearLayout>
+
                 <ImageView
                     android:id="@+id/right_arrow_aim"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_alignParentEnd="true"
                     android:layout_centerVertical="true"
-                    android:background="@drawable/ic_arrow_right" />
+                    android:background="@drawable/ic_arrow_right"
+                    android:layout_marginEnd="15dp"/>
 
                 <View
                     android:layout_width="match_parent"
-                    android:layout_height="2dp"
+                    android:layout_height="1dp"
+                    android:background="@color/normalGray"
                     android:layout_alignParentBottom="true" />
 
             </RelativeLayout>
