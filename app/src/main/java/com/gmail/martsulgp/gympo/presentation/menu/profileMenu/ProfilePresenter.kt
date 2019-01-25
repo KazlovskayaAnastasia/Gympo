@@ -23,5 +23,4 @@ class ProfilePresenter(private val userDataRepository: UserDataRepository) : Mvp
                 )
     }
 
-
 }

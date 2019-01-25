@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <RadioGroup
+        android:id="@+id/change_experience_radioBtn"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="150dp"
+        android:visibility="visible">
+
+        <RadioButton
+            android:id="@+id/radioBtn_trainee"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="24dp"
+            android:text="@string/trainee"
+            android:layout_weight="1" />
+
+        <RadioButton
+            android:id="@+id/radioBtn_beginner"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="24dp"
+            android:text="@string/beginner"
+            android:layout_weight="1" />
+
+        <RadioButton
+            android:id="@+id/radioBtn_middle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="24dp"
+            android:text="@string/middle"
+            android:layout_weight="1" />
+
+        <RadioButton
+            android:id="@+id/radioBtn_skilled"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="24dp"
+            android:text="@string/skilled"
+            android:layout_weight="1" />
+
+    </RadioGroup>
+
+</LinearLayout>

@@ -5,6 +5,12 @@
     android:orientation="vertical"
     android:background="@color/softBlue">
 
+    <FrameLayout
+        android:id="@+id/change_info_container"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+    </FrameLayout>
+
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent">
@@ -37,16 +43,15 @@
                     android:layout_marginStart="15dp">
 
                     <TextView
+                        android:id="@+id/profile_user_name_header"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:hint="Name"
                         android:textSize="15dp"/>
 
                     <TextView
                         android:id="@+id/profile_user_name"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="User name"
                         android:textSize="20dp"/>
 
                 </LinearLayout>
@@ -82,16 +87,15 @@
                     android:layout_marginStart="15dp">
 
                     <TextView
+                        android:id="@+id/profile_user_surname_header"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:hint="Surname"
                         android:textSize="15dp" />
 
                     <TextView
                         android:id="@+id/profile_user_surname"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="User surname"
                         android:textSize="20dp" />
 
                 </LinearLayout>
@@ -127,16 +131,15 @@
                     android:layout_marginStart="15dp">
 
                 <TextView
+                    android:id="@+id/profile_user_age_header"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:hint="Age"
                     android:textSize="15dp" />
 
                 <TextView
                     android:id="@+id/profile_user_age"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="User age"
                     android:textSize="20dp" />
 
                 </LinearLayout>
@@ -172,16 +175,15 @@
                     android:layout_marginStart="15dp">
 
                 <TextView
+                    android:id="@+id/profile_user_height_header"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:hint="Height"
                     android:textSize="15dp" />
 
                 <TextView
                     android:id="@+id/profile_user_height"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="User height"
                     android:textSize="20dp" />
 
                 </LinearLayout>
@@ -217,16 +219,15 @@
                     android:layout_marginStart="15dp">
 
                 <TextView
+                    android:id="@+id/profile_user_weight_header"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:hint="Weight"
                     android:textSize="15dp" />
 
                 <TextView
                     android:id="@+id/profile_user_weight"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="User weight"
                     android:textSize="20dp" />
 
                 </LinearLayout>
@@ -262,9 +263,9 @@
                     android:layout_marginStart="15dp">
 
                 <TextView
+                    android:id="@+id/profile_user_experience_header"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:hint="Experience"
                     android:textSize="15dp" />
 
                 <TextView
@@ -272,7 +273,6 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_centerVertical="true"
-                    android:text="User experience"
                     android:textSize="20dp" />
 
                 </LinearLayout>
@@ -308,9 +308,9 @@
                     android:layout_marginStart="15dp">
 
                 <TextView
+                    android:id="@+id/profile_user_aim_header"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:hint="Aim"
                     android:textSize="15dp" />
 
                 <TextView
@@ -318,7 +318,6 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_centerVertical="true"
-                    android:text="User aim"
                     android:textSize="20dp" />
 
                 </LinearLayout>

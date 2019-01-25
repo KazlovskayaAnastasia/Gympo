@@ -54,6 +54,10 @@
     <string name="emailIsNotContainSymbol">Email is not contain symbol @</string>
     <string name="passwordIsEmpty">Password can\'t be empty!</string>
     <string name="invalidLengthOfPassword">Invalid length of password!</string>
+    <string name="trainee">No value</string>
+    <string name="beginner">0 - 2 years</string>
+    <string name="middle">2 - 5 years</string>
+    <string name="skilled">5 years and more</string>
 
 
     <string-array name="weekdays">
@@ -67,7 +71,7 @@
         <item name="sunday">Sunday</item>
     </string-array>
 
-    <string-array name="destination">
+    <string-array name="aim">
         <item name="not_defined">Not defined</item>
         <item name="lose_weight">Lose weight</item>
         <item name="bulk_up">Bulk up</item>
@@ -79,7 +83,7 @@
         <item name="russian">Russian</item>
     </string-array>
 
-    <string-array name="period">
+    <string-array name="experience">
         <item name="trainee">No value</item>
         <item name="beginner">0 - 2 years</item>
         <item name="middle">2 - 5 years</item>
@@ -92,5 +96,16 @@
     <string name="nav_header_subtitle">android.studio@android.com</string>
     <string name="nav_header_desc">Navigation header</string>
     <string name="action_settings">Settings</string>
+
+    <string-array name="profileFields">
+        <item name ="name">Name</item>
+        <item name ="surname">Surname</item>
+        <item name ="age">Age</item>
+        <item name ="height">Height</item>
+        <item name ="weight">Weight</item>
+        <item name ="aim">Aim</item>
+        <item name ="experience">Experience</item>
+    </string-array>
+
 
 </resources>

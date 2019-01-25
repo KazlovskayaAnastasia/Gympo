@@ -177,7 +177,7 @@
                 android:layout_below="@+id/period"
                 android:layout_gravity="center_vertical"
                 android:layout_marginTop="10dp"
-                android:entries="@array/period"/>
+                android:entries="@array/experience"/>
 
             <TextView
                 android:id="@+id/destination"
@@ -195,7 +195,7 @@
                 android:layout_below="@+id/destination"
                 android:layout_gravity="center_vertical"
                 android:layout_marginTop="10dp"
-                android:entries="@array/destination"/>
+                android:entries="@array/aim"/>
 
             <Button
                 android:id="@+id/btn_ok"

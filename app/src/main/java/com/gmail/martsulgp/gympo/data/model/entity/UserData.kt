@@ -1,5 +1,7 @@
 package com.gmail.martsulgp.gympo.data.model.entity
 
+import java.io.Serializable
+
 data class UserData(
         var name: String,
         var surname: String,
@@ -13,4 +15,4 @@ data class UserData(
         var objectId: String,
         var token: String
 
-)
+) : Serializable
