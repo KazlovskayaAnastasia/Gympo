@@ -63,16 +63,12 @@ open class BaseProfileChangeFragment : MvpFragment(), BaseProfileChangeView {
             fragment.arguments = bundle
             return fragment
         }
-
-        fun selectField() {
-
-        }
     }
 
     private fun addFragment(type: EditorEnum, param: String, currentUser: Serializable?) {
 
         val editFragment = when(type) {
-            EditorEnum.RADIOBTN_EDIT -> ProfileChangeRadioBtnFragment()
+            EditorEnum.RADIOBTN_EDIT -> ProfileChangeRadioBtnFragment.newInstance(param,currentUser)
             EditorEnum.TEXT_EDIT -> ProfileChangeTextFragment.newInstance(param,currentUser)
         }
         val transaction = fragmentManager?.beginTransaction()

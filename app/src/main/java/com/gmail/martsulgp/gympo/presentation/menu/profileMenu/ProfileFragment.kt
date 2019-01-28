@@ -7,7 +7,6 @@ import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.RelativeLayout
 import android.widget.TextView
-import android.widget.Toast
 import butterknife.BindView
 import butterknife.ButterKnife
 import com.arellomobile.mvp.MvpFragment
@@ -132,10 +131,10 @@ class ProfileFragment : MvpFragment(), ProfileView, View.OnClickListener {
             R.id.layout_user_name -> goToChangeTextFragment(EditorEnum.TEXT_EDIT, layout_user_name.profile_user_name_header.text.toString())
             R.id.layout_user_surname -> goToChangeTextFragment(EditorEnum.TEXT_EDIT, layout_user_surname.profile_user_surname_header.text.toString())
             R.id.layout_user_age -> goToChangeTextFragment(EditorEnum.TEXT_EDIT, layout_user_age.profile_user_age_header.text.toString())
-            R.id.layout_user_height -> Toast.makeText(activity, "Height Pressed!", Toast.LENGTH_SHORT).show()
-            R.id.layout_user_weight -> Toast.makeText(activity, "Weight Pressed!", Toast.LENGTH_SHORT).show()
-            R.id.layout_user_experience -> Toast.makeText(activity, "Experience Pressed!", Toast.LENGTH_SHORT).show()
-            R.id.layout_user_aim -> Toast.makeText(activity, "Aim Pressed!", Toast.LENGTH_SHORT).show()
+            R.id.layout_user_height -> goToChangeTextFragment(EditorEnum.TEXT_EDIT, layout_user_height.profile_user_height_header.text.toString())
+            R.id.layout_user_weight -> goToChangeTextFragment(EditorEnum.TEXT_EDIT, layout_user_weight.profile_user_weight_header.text.toString())
+            R.id.layout_user_experience -> goToChangeTextFragment(EditorEnum.RADIOBTN_EDIT, layout_user_experience.profile_user_experience_header.text.toString())
+            R.id.layout_user_aim -> goToChangeTextFragment(EditorEnum.RADIOBTN_EDIT, layout_user_aim.profile_user_aim_header.text.toString())
         }
     }
 
@@ -152,9 +151,9 @@ class ProfileFragment : MvpFragment(), ProfileView, View.OnClickListener {
     }
 
     private fun goToChangeTextFragment(enum: EditorEnum, param: String) {
-        val profileChangeTextFragment = BaseProfileChangeFragment.editField(enum, param, currentUser)
+        val baseProfileChangeFragment = BaseProfileChangeFragment.editField(enum, param, currentUser)
         val transaction = fragmentManager?.beginTransaction()
-        transaction?.replace(R.id.main_fragment_container, profileChangeTextFragment)
+        transaction?.replace(R.id.main_fragment_container, baseProfileChangeFragment)
         transaction?.commit()
     }
 }

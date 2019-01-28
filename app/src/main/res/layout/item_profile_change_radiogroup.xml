@@ -4,43 +4,44 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
+    <TextView
+        android:id="@+id/profile_radioBtn_info"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="15dp"/>
+
     <RadioGroup
-        android:id="@+id/change_experience_radioBtn"
+        android:id="@+id/change_radioBtn"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="150dp"
-        android:visibility="visible">
+        android:layout_marginTop="5dp">
 
         <RadioButton
-            android:id="@+id/radioBtn_trainee"
+            android:id="@+id/radioBtn"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="24dp"
-            android:text="@string/trainee"
             android:layout_weight="1" />
 
         <RadioButton
-            android:id="@+id/radioBtn_beginner"
+            android:id="@+id/radioBtn1"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="24dp"
-            android:text="@string/beginner"
             android:layout_weight="1" />
 
         <RadioButton
-            android:id="@+id/radioBtn_middle"
+            android:id="@+id/radioBtn2"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="24dp"
-            android:text="@string/middle"
             android:layout_weight="1" />
 
         <RadioButton
-            android:id="@+id/radioBtn_skilled"
+            android:id="@+id/radioBtn3"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="24dp"
-            android:text="@string/skilled"
             android:layout_weight="1" />
 
     </RadioGroup>

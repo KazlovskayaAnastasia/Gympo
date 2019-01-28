@@ -40,8 +40,6 @@ class ProfileChangeTextFragment: BaseProfileChangeFragment() {
         userMap[resources.getStringArray(R.array.profileFields)[2]] = userData.age.toString()
         userMap[resources.getStringArray(R.array.profileFields)[3]] = userData.height.toString()
         userMap[resources.getStringArray(R.array.profileFields)[4]] = userData.weight.toString()
-        userMap[resources.getStringArray(R.array.profileFields)[5]] = userData.aim.toString()
-        userMap[resources.getStringArray(R.array.profileFields)[6]] = userData.experience.toString()
     }
 
 
