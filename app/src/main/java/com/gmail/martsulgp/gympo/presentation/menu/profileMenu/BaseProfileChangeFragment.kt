@@ -1,10 +1,15 @@
 package com.gmail.martsulgp.gympo.presentation.menu.profileMenu
 
+import android.annotation.SuppressLint
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Button
+import android.widget.ImageView
+import androidx.annotation.Nullable
 import androidx.appcompat.app.AppCompatActivity
+import butterknife.BindView
 import butterknife.ButterKnife
 import com.arellomobile.mvp.MvpFragment
 import com.arellomobile.mvp.presenter.InjectPresenter
@@ -16,6 +21,13 @@ import com.gmail.martsulgp.gympo.data.model.entity.UserData
 import java.io.Serializable
 
 open class BaseProfileChangeFragment : MvpFragment(), BaseProfileChangeView {
+
+    @Nullable
+    @BindView(R.id.btn_close)
+    lateinit var closeBtn: ImageView
+
+//    @BindView(R.id.btn_change_info)
+    lateinit var saveBtn: Button
 
     @InjectPresenter(type = PresenterType.GLOBAL)
     lateinit var presenter: BaseProfileChangePresenter
@@ -30,6 +42,17 @@ open class BaseProfileChangeFragment : MvpFragment(), BaseProfileChangeView {
         val view = inflater.inflate(R.layout.base_profile_change_fragment, container, false)
         ButterKnife.bind(this, view)
 
+//        closeBtn.setOnClickListener {
+//           presenter.closeBtnClick()
+//        }
+
+
+        saveBtn = view.findViewById<Button>(R.id.btn_change_info).apply {
+            setOnClickListener {
+                presenter.closeBtnClick()
+            }
+        }
+
         (activity as AppCompatActivity).supportActionBar!!.hide()
         addFragment(
                 when (this.arguments.getString(FRAGMENT_KEY, "")) {
@@ -38,6 +61,8 @@ open class BaseProfileChangeFragment : MvpFragment(), BaseProfileChangeView {
                 },
                 this.arguments.getString(PARAM_KEY, ""),
                 this.arguments.getSerializable(USER_KEY))
+
+
         return view
     }
 
@@ -65,6 +90,7 @@ open class BaseProfileChangeFragment : MvpFragment(), BaseProfileChangeView {
         }
     }
 
+    @SuppressLint("ResourceType")
     private fun addFragment(type: EditorEnum, param: String, currentUser: Serializable?) {
 
         val editFragment = when(type) {
@@ -73,6 +99,7 @@ open class BaseProfileChangeFragment : MvpFragment(), BaseProfileChangeView {
         }
         val transaction = fragmentManager?.beginTransaction()
         transaction?.add(R.id.edit_profile_container, editFragment)
+                ?.addToBackStack(null)
         transaction?.commit()
     }
 
@@ -80,5 +107,13 @@ open class BaseProfileChangeFragment : MvpFragment(), BaseProfileChangeView {
     enum class EditorEnum {
         TEXT_EDIT,
         RADIOBTN_EDIT
+    }
+
+    override fun goBack() {
+        fragmentManager.popBackStack()
+//        val profileFragment = ProfileFragment()
+//        val transaction = fragmentManager?.beginTransaction()
+//        transaction?.replace(R.id.entryContainer, profileFragment)
+//        transaction?.commit()
     }
 }

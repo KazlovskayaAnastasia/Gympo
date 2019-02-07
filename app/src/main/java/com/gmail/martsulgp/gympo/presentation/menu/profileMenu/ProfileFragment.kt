@@ -1,5 +1,6 @@
 package com.gmail.martsulgp.gympo.presentation.menu.profileMenu
 
+import android.annotation.SuppressLint
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -150,10 +151,13 @@ class ProfileFragment : MvpFragment(), ProfileView, View.OnClickListener {
 
     }
 
+    @SuppressLint("ResourceType")
     private fun goToChangeTextFragment(enum: EditorEnum, param: String) {
         val baseProfileChangeFragment = BaseProfileChangeFragment.editField(enum, param, currentUser)
         val transaction = fragmentManager?.beginTransaction()
+        transaction?.setCustomAnimations(R.anim.slide_down, R.anim.slide_up)
         transaction?.replace(R.id.main_fragment_container, baseProfileChangeFragment)
+                ?.addToBackStack(null)
         transaction?.commit()
     }
 }

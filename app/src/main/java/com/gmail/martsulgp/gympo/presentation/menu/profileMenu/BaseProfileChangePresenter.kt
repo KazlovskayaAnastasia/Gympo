@@ -4,4 +4,9 @@ import com.arellomobile.mvp.InjectViewState
 import com.arellomobile.mvp.MvpPresenter
 
 @InjectViewState
-class BaseProfileChangePresenter : MvpPresenter<BaseProfileChangeView>()
+class BaseProfileChangePresenter : MvpPresenter<BaseProfileChangeView>(){
+
+    fun closeBtnClick(){
+        viewState.goBack()
+    }
+}
