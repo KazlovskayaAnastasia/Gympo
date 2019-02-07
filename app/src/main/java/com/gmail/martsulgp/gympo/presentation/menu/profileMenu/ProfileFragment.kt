@@ -5,7 +5,6 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.ImageView
 import android.widget.RelativeLayout
 import android.widget.TextView
 import butterknife.BindView
@@ -34,8 +33,8 @@ class ProfileFragment : MvpFragment(), ProfileView, View.OnClickListener {
     @ProvidePresenter(type = PresenterType.GLOBAL)
     fun provideDialogPresenter() = ProfilePresenter(userDataRepository)
 
-    @BindView(R.id.profile_user_pic)
-    lateinit var profile_user_pic: ImageView
+//    @BindView(R.id.profile_user_pic)
+//    lateinit var profile_user_pic: ImageView
 
     @BindView(R.id.layout_user_name)
     lateinit var layout_user_name: RelativeLayout
